@@ -18,6 +18,7 @@ function WelcomePage() {
 
     return (
         <section >
+            <img src="./../../images/logo.png" alt="Guidr Logo"></img>
             <h1>Welcome to Guidr!</h1>
             <br></br>
             <form onChange={event => handleSubmit(event)} className="login-form">
