@@ -12,11 +12,15 @@ function WelcomePage () {
         setUser({...user, password: event.target.value})
     }
 
+    const handleSubmit = event => {
+        event.PreventDefault();
+    }
+
     return (
         <section >
             <h1>Welcome to Guidr!</h1>
             <br></br>
-            <form className="login-form">
+            <form onChange={event => handleSubmit(event)} className="login-form">
                <label>
                    Username:
                 <input
