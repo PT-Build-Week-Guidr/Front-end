@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-function WelcomePage () {
+function WelcomePage() {
 
-    const [user, setUser] = useState({name: " ", password: " "});
+    const [user, setUser] = useState({ name: " ", password: " " });
 
     const handleUserName = event => {
-        setUser({...user, username: event.target.value})
+        setUser({ ...user, username: event.target.value })
     }
 
     const handlePassword = event => {
-        setUser({...user, password: event.target.value})
+        setUser({ ...user, password: event.target.value })
     }
 
     const handleSubmit = event => {
@@ -21,27 +21,26 @@ function WelcomePage () {
             <h1>Welcome to Guidr!</h1>
             <br></br>
             <form onChange={event => handleSubmit(event)} className="login-form">
-               <label>
-                   Username:
+                <label>
+                    Username:
                 <input
-                type="text"
-                placeholder="Username"
-                onChange={event=> handleUserName(event)}
-                />
-               </label> 
-               <br></br>
-               <br></br>
-               <label>
-                   Password: 
+                        type="text"
+                        placeholder="Username"
+                        onChange={event => handleUserName(event)}
+                    />
+                </label>
+                <br></br>
+                <br></br>
+                <label>
+                    Password:
                    <input
-                   type="text"
-                   placeholder="Password"
-                   onChange={event => handlePassword(event)}
-                   />
-               </label>
+                        type="text"
+                        placeholder="Password"
+                        onChange={event => handlePassword(event)}
+                    />
+                </label>
             </form>
         </section>
-        
     );
 }
 
