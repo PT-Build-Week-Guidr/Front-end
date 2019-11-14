@@ -2,50 +2,43 @@ import React, { useState } from "react";
 
 function WelcomePage () {
 
-    const [username, setUserName] = useState([]);
-    const [password, setPassword] = useState([]);
+    const [user, setUser] = useState({name: " ", password: " "});
 
     const handleUserName = event => {
-
-        setUserName(username);
-
+        setUser({...user, username: event.target.value})
     }
 
     const handlePassword = event => {
-
-        setPassword(password);
-
+        setUser({...user, password: event.target.value})
     }
 
     return (
-        <section className="login-form">
+        <section >
             <h1>Welcome to Guidr!</h1>
-            <form>
+            <br></br>
+            <form className="login-form">
                <label>
                    Username:
                 <input
                 type="text"
-                placeholder="UserName"
-                username="username"
-                onChange={handleUserName}
+                placeholder="Username"
+                onChange={event=> handleUserName(event)}
                 />
                </label> 
                <br></br>
                <br></br>
                <label>
-                   Password:
+                   Password: 
                    <input
                    type="text"
-                   password="password"
                    placeholder="Password"
-                   onChange={handlePassword}
+                   onChange={event => handlePassword(event)}
                    />
                </label>
             </form>
         </section>
         
     );
-    
 }
 
 export default WelcomePage;
