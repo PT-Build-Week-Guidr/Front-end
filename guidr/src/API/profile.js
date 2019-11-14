@@ -9,7 +9,7 @@ useEffect(() => {
     api()
         .get('https://guidr-project.herokuapp.com/users/:id/profile', {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: localStorage.getItem('guidr')
             }
         
         })

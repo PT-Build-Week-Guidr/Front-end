@@ -17,9 +17,9 @@ function Login() {
   const handleSubmit = event => {
     event.preventDefault();
     api()
-      .get("https://guidr-project.herokuapp.com/trips", userAuth)
+      .post("https://guidr-project.herokuapp.com/users/login", userAuth)
       .then(res => {
-        localStorage.setItem("token2", res.data.payload);
+        window.localStorage.setItem("guidr", res.data.payload);
       })
       .catch(err => {
         console.log(err);

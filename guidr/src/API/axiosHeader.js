@@ -4,7 +4,7 @@ export default function() {
     return axios.create({
         baseURL: "https://guidr-project.herokuapp.com",
         headers: {
-            authorization: localStorage.getItem("token2"),
+            authorization: localStorage.getItem("guidr"),
         },
     })
 }
