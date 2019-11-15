@@ -4,7 +4,7 @@ function HomePage() {
 
     return (
         <section>
-        <img src="./../../images/logo.png" alt="Guidr Logo"></img>
+        <img src="./images/logo.png" alt="Guidr Logo"></img>
         <h1>This is the home page!</h1>
         </section>
     );
