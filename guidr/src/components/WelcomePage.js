@@ -18,7 +18,8 @@ function WelcomePage() {
 
     return (
         <section >
-            <img src="./images/logo.png" alt="Guidr Logo"></img>
+            <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
+            <br></br>
             <h1>Welcome to Guidr!</h1>
             <br></br>
             <form onChange={event => handleSubmit(event)} className="login-form">
@@ -41,6 +42,10 @@ function WelcomePage() {
                     />
                 </label>
             </form>
+            <br></br>
+            <button className="buttonStyler">Submit</button>
+            <br></br>
+            <p>Don't have an account? Click here to create one:</p>
         </section>
     );
 }
