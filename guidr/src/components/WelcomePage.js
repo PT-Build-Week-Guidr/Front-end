@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import {Button } from 'reactstrap';
+import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 function WelcomePage() {
 
@@ -18,10 +21,11 @@ function WelcomePage() {
 
     return (
         <section >
+            <NavBar />
             <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
-            <br></br>
+            <br />
             <h1>Welcome to Guidr!</h1>
-            <br></br>
+            <br />
             <form onChange={event => handleSubmit(event)} className="login-form">
                 <label>
                     Username:
@@ -31,8 +35,8 @@ function WelcomePage() {
                         onChange={event => handleUserName(event)}
                     />
                 </label>
-                <br></br>
-                <br></br>
+                <br />
+                <br />
                 <label>
                     Password:
                    <input
@@ -42,10 +46,11 @@ function WelcomePage() {
                     />
                 </label>
             </form>
-            <br></br>
-            <button className="buttonStyler">Submit</button>
-            <br></br>
+            <br />
+            <Button color="success" tag={ Link } to='/'>Submit</Button>{' '}
+            <br />
             <p>Don't have an account? Click here to create one:</p>
+            <Button color="success" tag={ Link } to='/'>Sign Up</Button>{' '}
         </section>
     );
 }

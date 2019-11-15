@@ -1,16 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button, Nav, NavItem, NavLink } from 'reactstrap';
 
 function NavBar () {
     return (
-        <section>
-        <span>Temp text for profile pic</span>
-        <button className="buttonstyler">Trips</button>
-        <button className="buttonstyler">Sign in</button>
+        <div>
+            <Nav pills>
+                <NavItem>
+                    <NavLink href="#" active>Profile Pic</NavLink>
+               </NavItem>
+        <NavItem>
+        <NavLink href="#" active>Trips</NavLink>
+        </NavItem>
+        <NavItem> 
+        <NavLink href="#" active>Sign In</NavLink>
+        </NavItem>
         <br></br>
         <br></br>
         <br></br>
-        </section>
+           </Nav>
+        </div>
 
     );
 }

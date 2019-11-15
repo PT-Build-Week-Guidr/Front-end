@@ -2,7 +2,7 @@ header h1 {
     text-align: center;
 }
 
-.img-align > .homePageButton {
+section > .homePageButton {
     color: #9f7462;
     border-radius: 10px;
     padding: 40px;
