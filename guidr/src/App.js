@@ -12,7 +12,20 @@ function App() {
 
   return (
     <div className="App">
-      <ProfilePage />
+
+      <Route path= "/profile" render={props=>
+          <div>
+            <Header
+              {...props}
+
+            />
+            <ProfilePage
+              {...props}
+
+            />
+          </div>
+        }
+      />
     </div>
   );
 }

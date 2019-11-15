@@ -5,16 +5,16 @@ import {Link} from 'react-router-dom';
 import UserCardMain from './usercard.js';
 
 
-const ProfilePage = (props) =>{
+const TravelPage = (props) =>{
 
-  
 
-  console.log('profile page!');
+
+  console.log('Travel page!');
 
   return(
 
     <div>
-      <UserCardMain />
+      <TravelCardMain />
     </div>
 
   );
@@ -23,4 +23,4 @@ const ProfilePage = (props) =>{
 
 }
 
-export default ProfilePage;
+export default TravelPage;
