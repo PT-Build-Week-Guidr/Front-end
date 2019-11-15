@@ -1,10 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-export default function() {
+export default () => {
+    const token = localStorage.getItem('token');
+
     return axios.create({
-        baseURL: "https://guidr-project.herokuapp.com",
         headers: {
-            authorization: localStorage.getItem("guidr"),
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`,
         },
-    })
-}
+    });
+};

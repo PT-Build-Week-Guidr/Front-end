@@ -1,38 +1,92 @@
-import React, { useState, useEffect} from "react";
-import api from "./login";
+import React, { useState } from "react";
 
-const Profile = props => {
-const [profile, setProfile] = useState([]);
+const Profile = () => {
+  const [newTrip, setNewTrip] = useState({
+    title: "",
+    description: "",
+    private: "",
+    type: "",
+    start_date: "",
+    end_date: "",
+    duration_hours: "",
+    duration_days: ","
+  });
 
+  const handleChange = event => {
+    setNewTrip({
+      ...newTrip,
+      [event.target.name]: event.target.value
+    });
+  };
 
-useEffect(() => {
-    api()
-        .get('https://guidr-project.herokuapp.com/users/:id/profile', {
-            headers: {
-                Authorization: localStorage.getItem('guidr')
-            }
-        
-        })
-        .then(res => {
-            setProfile(res.data)
-        })
+  const handleSubmit = event => {
+    event.preventDefault();
+    setNewTrip(newTrip)
+    console.log(newTrip)
+  };
 
-        .catch(err => {
-            console.log(err.response)
-        })
-}, [])
-   
-return (
-    <>
-        <div>
-            <h2>My Profile</h2>
-            {profile.map(profile => {
-                return <div key={profile.id} profile={profile}  />
-            })}
-        </div>
-    </>
-)
-
-}
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
+          value={newTrip.title}
+          type="text"
+          name="title"
+          placeholder="Title"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.description}
+          type="text"
+          name="description"
+          placeholder="description"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.private}
+          type="text"
+          name="private"
+          placeholder="private"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.type}
+          type="text"
+          name="type"
+          placeholder="type"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.start_date}
+          type="date"
+          name="Start_date"
+          placeholder="start_date"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.end_date}
+          type="date"
+          name="end_date"
+          placeholder="end_date"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.duration_hours}
+          type="text"
+          name="duration_hours"
+          placeholder="duration_hours"
+        />
+        <input
+          onChange={handleChange}
+          value={newTrip.duration_days}
+          type="text"
+          name="duration_days"
+          placeholder="duration_days"
+        />
+        <button type="submit">Add Trip</button>
+      </form>
+    </div>
+  );
+};
 export default Profile;
-

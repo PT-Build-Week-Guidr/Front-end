@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import api from "./axiosHeader";
 
-function Login() {
+const Login = () => {
   const [userAuth, setUserAuth] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const handleChange = event => {
@@ -19,7 +19,8 @@ function Login() {
     api()
       .post("https://guidr-project.herokuapp.com/users/login", userAuth)
       .then(res => {
-        window.localStorage.setItem("guidr", res.data.payload);
+        console.log(res.data.token)
+        localStorage.setItem("token", res.data.token)
       })
       .catch(err => {
         console.log(err);
