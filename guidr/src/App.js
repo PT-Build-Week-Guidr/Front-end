@@ -3,7 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import {Link, Route} from 'react-router-dom';
 
+
+//Load in the custom components here please
 import ProfilePage from './components/profile.js';
+import Footer from './components/footer.js';
 
 
 function App() {
@@ -13,14 +16,14 @@ function App() {
   return (
     <div className="App">
 
-      <Route path= "/profile" render={props=>
+      <Route path= "/" render={props=>
           <div>
-            <Header
+
+            <ProfilePage
               {...props}
 
             />
-            <ProfilePage
-              {...props}
+            <Footer
 
             />
           </div>
