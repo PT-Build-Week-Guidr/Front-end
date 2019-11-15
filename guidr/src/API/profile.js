@@ -9,7 +9,7 @@ const Profile = () => {
     start_date: "",
     end_date: "",
     duration_hours: "",
-    duration_days: ","
+    duration_days: ""
   });
 
   const handleChange = event => {
