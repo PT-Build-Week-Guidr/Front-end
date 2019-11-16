@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
@@ -47,10 +47,10 @@ function WelcomePage() {
                 </label>
             </form>
             <br />
-            <Button color="success" tag={ Link } to='/'>Submit</Button>{' '}
+            <Button color="success" tag={Link} to='/'>Submit</Button>{' '}
             <br />
             <p>Don't have an account? Click here to create one:</p>
-            <Button color="success" tag={ Link } to='/'>Sign Up</Button>{' '}
+            <Button color="success" tag={Link} to='/'>Sign Up</Button>{' '}
         </section>
     );
 }

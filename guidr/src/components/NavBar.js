@@ -1,26 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Nav, NavItem, NavLink } from 'reactstrap';
+import React, {useState} from 'react';
+import { NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Navbar } from 'reactstrap';
 
-function NavBar () {
+const NavBar = props =>  {
+
+    const {collapsed, setCollapsed} = useState(true);
+    const toggleNavbar = () => setCollapsed(!collapsed)
+
     return (
         <div>
-            <Nav pills>
-                <NavItem>
-                    <NavLink href="#" active>Profile Pic</NavLink>
-               </NavItem>
-        <NavItem>
-        <NavLink href="#" active>Trips</NavLink>
-        </NavItem>
-        <NavItem> 
-        <NavLink href="#" active>Sign In</NavLink>
-        </NavItem>
-        <br></br>
-        <br></br>
-        <br></br>
-           </Nav>
+            <Navbar color="success" dark>
+                <NavbarBrand href="/" className="mr-auto">Menu</NavbarBrand>
+                <NavbarToggler onclick={toggleNavbar} className="mr-2" />
+                <Collapse isOpen={!collapsed} navbar>
+                    <Nav navbar>
+                        <NavItem>
+                            <NavLink href="#">Trips</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Profile</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
         </div>
-
     );
 }
 
