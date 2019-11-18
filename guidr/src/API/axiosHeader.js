@@ -7,7 +7,7 @@ export default () => {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `${token}`,
-            "userID": `${id}`,
+            "id": `${id}`,
         },
     });
 };

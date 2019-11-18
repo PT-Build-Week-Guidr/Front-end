@@ -2,6 +2,8 @@ import React from 'react';
 
 const TripCard = (props) => {
 
+
+
     return (
         <div>
             <h3>{props.trip.title}</h3>

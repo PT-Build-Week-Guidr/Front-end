@@ -1,51 +1,35 @@
-import React, { useState, useEffect } from "react";
-import api from "./axiosHeader";
-import Profile from "./profile";
+import React, { useEffect } from "react";
 import TripCard from "./addTrip";
-const Trips = () => {
-  const [trips, setTrips] = useState([]);
-  const [getTrips, setGetTrips] = useState([]);
+import { connect } from 'react-redux';
+import { FetchTrips } from "../API/actions/fetching";
 
+const Trips = (props) => {
   useEffect(() => {
-    api()
-        .post("https://guidr-project.herokuapp.com/users/:1/trips", {
-            headers: {
-                Authorization: localStorage.getItem('token'),
-                userID: localStorage.getItem("id"),
-            }
-        })
-        .then(res => {
-            setTrips(res.data)
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.log(err.response)
-        })
+    props.FetchTrips();
 }, [])
 
-  api()
-    .get("https://guidr-project.herokuapp.com/users/:1/trips", {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      }
-    })
-    .then(res => {
-      // console.log(res.data);
-      setGetTrips(res.data)
-    })
-
-    .catch(err => {
-      console.log(err.response);
-    });
-
+if(props.isFetching){
+  return <p>Loading trips</p>
+}
 
   return (
-    <div>
-            {trips.map(trip => {
-                return <TripCard key={trip} trip={trip} />
+  <>
+            {props.trips.map(trip => {
+                return <TripCard key={trip.id} trip={trip.id} />
             })}
-    </div>
+  </>
   );
 };
 
-export default Trips
+const mapStateToProps = state => {
+  return {
+      trips: state.trips,
+      isFetching: state.isFetching,
+      error: state.error
+  }
+}
+
+const mapDispatchToProps = { FetchTrips };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trips);
+

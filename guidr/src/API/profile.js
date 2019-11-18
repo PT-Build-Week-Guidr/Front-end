@@ -13,6 +13,7 @@ const Profile = () => {
     duration_days: ""
   });
 
+ 
   const handleChange = event => {
     setNewTrip({
       ...newTrip,
