@@ -9,7 +9,7 @@ const NavBar = props =>  {
     return (
         <div>
             <Navbar color="success" dark>
-                <NavbarBrand href="/" className="mr-auto">Menu</NavbarBrand>
+                <NavbarBrand href="/" className="mr-auto"><img className="img-align" src="./images/icon.png" width='50' height='50' alt="User Icon"></img></NavbarBrand>
                 <NavbarToggler onclick={toggleNavbar} className="mr-2" />
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav navbar>
