@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Profile = () => {
   const [newTrip, setNewTrip] = useState({
+    id: 2,
     title: "",
     description: "",
     private: "",

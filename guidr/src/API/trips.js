@@ -7,14 +7,18 @@ const Trips = () => {
 
   const addTrip = () => {
     api()
-      .post("https://guidr-project.herokuapp.com/users/:id/trips", {
+      .post("https://guidr-project.herokuapp.com/users/login", {
         headers: {
-          Authorization: localStorage.getItem("token")
+          Authorization: localStorage.getItem("token"),
+          userID: localStorage.getItem("id")
+
         }
       })
       .then(res => {
         // console.log(res.data);
-        setTripList(res.data);
+        localStorage.setItem("id", res.data.id)
+        console.log(res.data.id)
+        setTripList(res.data)
       })
 
       .catch(err => {
@@ -24,14 +28,14 @@ const Trips = () => {
 
   useEffect(() => {
     api()
-        .get("https://guidr-project.herokuapp.com/users/:id/trips", {
+        .get("https://guidr-project.herokuapp.com/trips", {
             headers: {
                 Authorization: localStorage.getItem('token')
             }
         })
         .then(res => {
             setTripList(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         })
 
         .catch(err => {
