@@ -3,55 +3,49 @@ import api from "./axiosHeader";
 import Profile from "./profile";
 import TripCard from "./addTrip";
 const Trips = () => {
-  const [TripList, setTripList] = useState([]);
-
-  const addTrip = () => {
-    api()
-      .post("https://guidr-project.herokuapp.com/users/login", {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-          userID: localStorage.getItem("id")
-
-        }
-      })
-      .then(res => {
-        // console.log(res.data);
-        localStorage.setItem("id", res.data.id)
-        console.log(res.data.id)
-        setTripList(res.data)
-      })
-
-      .catch(err => {
-        console.log(err.response);
-      });
-  };
+  const [trips, setTrips] = useState([]);
+  const [getTrips, setGetTrips] = useState([]);
 
   useEffect(() => {
     api()
-        .get("https://guidr-project.herokuapp.com/trips", {
+        .post("https://guidr-project.herokuapp.com/users/:1/trips", {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: localStorage.getItem('token'),
+                userID: localStorage.getItem("id"),
             }
         })
         .then(res => {
-            setTripList(res.data)
-            // console.log(res.data)
+            setTrips(res.data)
+            console.log(res.data)
         })
-
         .catch(err => {
             console.log(err.response)
         })
 }, [])
 
+  api()
+    .get("https://guidr-project.herokuapp.com/users/:1/trips", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      }
+    })
+    .then(res => {
+      // console.log(res.data);
+      setGetTrips(res.data)
+    })
+
+    .catch(err => {
+      console.log(err.response);
+    });
 
 
   return (
     <div>
-            {TripList.map(trip => {
+            {trips.map(trip => {
                 return <TripCard key={trip} trip={trip} />
             })}
     </div>
   );
 };
 
-export default Trips;
+export default Trips

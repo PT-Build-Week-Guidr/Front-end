@@ -20,7 +20,10 @@ const Login = () => {
       .post("https://guidr-project.herokuapp.com/users/login", userAuth)
       .then(res => {
         console.log(res.data.token)
+        console.log(res.data.id)
         localStorage.setItem("token", res.data.token)
+        localStorage.setItem("id", res.data.id)
+
       })
       .catch(err => {
         console.log(err);
