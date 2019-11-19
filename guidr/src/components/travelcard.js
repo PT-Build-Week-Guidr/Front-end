@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // import {Link} from 'react-router-dom';
 import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
-  CardTitle, CardText} from 'reactstrap';
+  CardTitle, CardText, Media} from 'reactstrap';
 
 
 
