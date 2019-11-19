@@ -1,58 +1,38 @@
-import Login from "./API/login";
 import { Link, Route } from "react-router-dom";
-import Profile from "./API/profile"
-import  PrivateRoute  from "./API/ProtectedRoute";
+import Profile from "./API/profile";
+import PrivateRoute from "./API/ProtectedRoute";
 import Trips from "./API/trips";
-import React, {useState} from 'react';
-import './App.css';
-
-import APITest from './components/apiTest.js';
-
+import React from "react";
+import "./App.css";
+import APITest from "./components/apiTest.js";
 
 //Load in the custom components here please
-import ProfilePage from './components/profile.js';
-import Footer from './components/footer.js';
+import ProfilePage from "./components/profile.js";
+import Footer from "./components/footer.js";
 
-import WelcomePage from './components/WelcomePage';
-import HomePage from './components/HomePage';
-
+import WelcomePage from "./components/WelcomePage";
+import HomePage from "./components/HomePage";
 
 function App() {
-
-
-
   return (
-      <div className="App">
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to='/login'>Log In</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/trips">My Trips</Link>
-      </nav>
-      
-      <Route path="/login" component={Login}></Route>
-      <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
-      <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
-
-
-
-      <Route path= "/profile/" render={props=>
-          <div>
-
-            <ProfilePage
-              {...props}
-
-            />
-            <Footer
-
-            />
-          </div>
-        }
-      />
+    <div className="App">
+      {/* <APITest /> */}
+      <Trips />
 
       <Route exact path="/" component={WelcomePage} />
-      <Route exact path="/home" component={HomePage} />
 
+      <Route
+        path="/profile/"
+        render={props => (
+          <div>
+            <ProfilePage {...props} />
+            <Footer />
+          </div>
+        )}
+      />
+      <PrivateRoute exact path="/home" component={HomePage} />
+      <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
+      <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
     </div>
   );
 }
