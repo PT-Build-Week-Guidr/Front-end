@@ -1,0 +1,32 @@
+header h1 {
+    text-align: center;
+}
+
+.paragraph-styler {
+    text-align: center;
+    margin: 5px;
+}
+
+
+.social-app{
+  width: 40px;
+  height: 40px;
+}
+
+.social-app2{
+  width: 86px;
+  height: 42px;
+}
+
+.footer-logo{
+  width:200px;
+}
+
+section > .homePageButton {
+    color: #9f7462;
+    border-radius: 10px;
+    padding: 40px;
+    height: 30px;
+    margin: 5px;
+}
+
