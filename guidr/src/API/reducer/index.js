@@ -54,8 +54,7 @@ const reducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload
       };
-    default:
-      return state;
+  
   }
 };
 

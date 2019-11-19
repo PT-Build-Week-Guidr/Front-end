@@ -12,6 +12,7 @@ const Trips = props => {
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
+  // public trips working
   console.log(props.trips);
 
   return (
