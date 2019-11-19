@@ -1,5 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css'
 import ReactDOM from 'react-dom';
+
 import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -12,3 +14,6 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
+
+
+

@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -11,15 +12,21 @@ import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
 
 
+
+import WelcomePage from './components/WelcomePage';
+import HomePage from './components/HomePage';
+
+
 function App() {
 
 
 
   return (
     <div className="App">
+
       <APITest />
 
-      <Route path= "/" render={props=>
+      <Route path= "/profile/" render={props=>
           <div>
 
             <ProfilePage
@@ -32,6 +39,10 @@ function App() {
           </div>
         }
       />
+
+      <Route exact path="/" component={WelcomePage} />
+      <Route exact path="/home" component={HomePage} />
+
     </div>
   );
 }
