@@ -34,10 +34,7 @@ function App() {
       <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
       <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
 
-    </div> 
-    <div className="App">
 
-      <APITest />
 
       <Route path= "/profile/" render={props=>
           <div>
