@@ -12,7 +12,7 @@ import APITest from './components/apiTest.js';
 //Load in the custom components here please
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-
+import NavBar from './components/NavBar.js';
 import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
 
@@ -23,26 +23,40 @@ function App() {
 
   return (
       <div className="App">
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to='/login'>Log In</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/trips">My Trips</Link>
-      </nav>
-      
-      <Route path="/login" component={Login}></Route>
-      <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
-      <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
+      {// <nav>
+      //   <Link to="/">Home</Link>
+      //   <Link to='/login'>Log In</Link>
+      //   <Link to="/profile">Profile</Link>
+      //   <Link to="/trips">My Trips</Link>
+      // </nav>
+      //
+      // <Route path="/login" component={Login}></Route>
+      // <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
+      // <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
+      }
 
-    </div> 
-    <div className="App">
+      <div className="App">
 
-      <APITest />
+        <APITest />
 
-      <Route path= "/profile/" render={props=>
+        <Route path= "/profile/" render={props=>
+            <div>
+              <NavBar />
+              <ProfilePage
+                {...props}
+
+              />
+              <Footer
+
+              />
+            </div>
+          }
+        />
+
+        <Route exact path="/" render={props =>
           <div>
-
-            <ProfilePage
+            <NavBar />
+            <WelcomePage
               {...props}
 
             />
@@ -50,13 +64,13 @@ function App() {
 
             />
           </div>
-        }
-      />
+        } />
+        <Route exact path="/home" component={HomePage} />
 
-      <Route exact path="/" component={WelcomePage} />
-      <Route exact path="/home" component={HomePage} />
+      </div>
 
     </div>
+
   );
 }
 

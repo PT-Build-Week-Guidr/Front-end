@@ -21,7 +21,7 @@ function WelcomePage() {
 
     return (
         <section >
-            <NavBar />
+            
             <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
             <br />
             <h1>Welcome to Guidr!</h1>

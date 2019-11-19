@@ -6,6 +6,8 @@ import reducer from "./API/reducer/index";
 import { BrowserRouter as Router } from "react-router-dom";
 import logger from "redux-logger";
 import 'bootstrap/dist/css/bootstrap.css'
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
@@ -18,8 +20,7 @@ ReactDOM.render(
 );
 
 
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
