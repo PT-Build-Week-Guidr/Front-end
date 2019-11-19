@@ -17,9 +17,9 @@ function App() {
   return (
     <div className="App">
       {/* <APITest /> */}
-      <Trips />
 
       <Route exact path="/" component={WelcomePage} />
+      <Trips />
 
       <Route
         path="/profile/"
@@ -33,6 +33,7 @@ function App() {
       <PrivateRoute exact path="/home" component={HomePage} />
       <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
       <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
+
     </div>
   );
 }
