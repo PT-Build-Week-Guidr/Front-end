@@ -21,7 +21,7 @@ function HomePage() {
             <br />
             <img className="img-align" src="./images/notebook.jpg" width="250" height="250" alt="Guidr Logo"></img>
             <p className="paragraph-styler">
-            Phasellus feugiat orci nec sem auctor mattis. Duis lacinia efficitur mattis. Aenean ipsum ex, fermentum semper pellentesque eu, ultrices ac turpis. Integer semper vitae dui id tempor. Aenean lectus mauris, aliquet ac sapien eget, ultrices ultricies magna. Nullam a lacinia quam, nec varius eros. Mauris tincidunt in nisl ac posuere. Nulla non augue laoreet, auctor diam at, molestie ligula. Quisque id tincidunt augue. Click here: <NavLink to='/log_in' activeClassName="homePageButton">Log Trip</NavLink>
+            Phasellus feugiat orci nec sem auctor mattis. Duis lacinia efficitur mattis. Aenean ipsum ex, fermentum semper pellentesque eu, ultrices ac turpis. Integer semper vitae dui id tempor. Aenean lectus mauris, aliquet ac sapien eget, ultrices ultricies magna. Nullam a lacinia quam, nec varius eros. Mauris tincidunt in nisl ac posuere. Nulla non augue laoreet, auctor diam at, molestie ligula. Quisque id tincidunt augue. Click here: <NavLink to='/login' activeClassName="homePageButton">Log Trip</NavLink>
             </p>
         </section>
     );
