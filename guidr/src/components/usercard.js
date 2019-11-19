@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
   CardTitle, CardText} from 'reactstrap';
 
-
+import temp from '../images/logo.png';
 
 const UserCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
   const [curProfile, setCurProfile] = useState([{
-    proImage:"./images/logo.png",
+    proImage:temp,
     title: "Michael Martin",
     tagline: "Making Mountains My Mole Hills!",
     guideSpecialty: "Climbing",
@@ -99,7 +99,7 @@ function TripDetails({ trips }){
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>
-            <img src={images} alt={title} />
+            <img src={temp} alt={title} />
             <br />
             {description}
             <p>Visited on: {date}</p>

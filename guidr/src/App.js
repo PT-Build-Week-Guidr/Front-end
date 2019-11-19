@@ -15,6 +15,7 @@ import Footer from './components/footer.js';
 import NavBar from './components/NavBar.js';
 import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
+import TravelPage from './components/travelpage.js';
 
 
 function App() {
@@ -22,18 +23,7 @@ function App() {
 
 
   return (
-      <div className="App">
-      {// <nav>
-      //   <Link to="/">Home</Link>
-      //   <Link to='/login'>Log In</Link>
-      //   <Link to="/profile">Profile</Link>
-      //   <Link to="/trips">My Trips</Link>
-      // </nav>
-      //
-      // <Route path="/login" component={Login}></Route>
-      // <PrivateRoute path="/profile" component={Profile}></PrivateRoute>
-      // <PrivateRoute path="/trips" component={Trips}></PrivateRoute>
-      }
+
 
       <div className="App">
 
@@ -41,7 +31,9 @@ function App() {
 
         <Route path= "/profile/" render={props=>
             <div>
-              <NavBar />
+              <NavBar
+
+              />
               <ProfilePage
                 {...props}
 
@@ -55,7 +47,9 @@ function App() {
 
         <Route exact path="/" render={props =>
           <div>
-            <NavBar />
+            <NavBar
+
+            />
             <WelcomePage
               {...props}
 
@@ -65,13 +59,42 @@ function App() {
             />
           </div>
         } />
-        <Route exact path="/home" component={HomePage} />
+
+        <Route exact path="/home" render={props =>
+          <div>
+            <NavBar
+
+            />
+            <HomePage
+              {...props}
+
+            />
+            <Footer
+
+            />
+          </div>
+        } />
+
+        <Route exact path="/trips" render={props =>
+          <div>
+            <NavBar
+
+            />
+            <TravelPage
+              {...props}
+
+            />
+            <Footer
+
+            />
+          </div>
+        } />
+
 
       </div>
 
-    </div>
 
-  );
-}
+  )
+};
 
 export default App;
