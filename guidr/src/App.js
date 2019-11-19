@@ -1,6 +1,4 @@
-
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Link, Route} from 'react-router-dom';
 
@@ -10,8 +8,6 @@ import APITest from './components/apiTest.js';
 //Load in the custom components here please
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-
-
 
 import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
