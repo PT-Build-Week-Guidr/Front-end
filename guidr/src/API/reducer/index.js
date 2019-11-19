@@ -3,7 +3,12 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE
 } from "../actions/fetching";
-import { START_POSTING, POST_SUCCESS, POST_FAILURE } from "../actions/posting";
+
+import { 
+  START_POSTING, 
+  POST_SUCCESS, 
+  POST_FAILURE 
+} from "../actions/posting";
 
 const initialState = {
   trips: [],
@@ -24,7 +29,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        postedTrips: action.payload,
+        trips: action.payload,
         error: ""
       };
     case FETCH_FAILURE:
@@ -45,7 +50,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        trips: action.payload,
+        postedTrips: action.payload,
         error: ""
       };
     case POST_FAILURE:
@@ -54,7 +59,6 @@ const reducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload
       };
-  
   }
 };
 

@@ -17,9 +17,9 @@ function App() {
   return (
     <div className="App">
       {/* <APITest /> */}
-
-      <Route exact path="/" component={WelcomePage} />
       <Trips />
+<Link to="/trips">Trips</Link>
+      <Route exact path="/" component={WelcomePage} />
 
       <Route
         path="/profile/"

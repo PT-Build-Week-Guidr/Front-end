@@ -74,6 +74,7 @@ function WelcomePage() {
             <br />
             <p>Don't have an account? Click here to create one:</p>
             <Button color="success" tag={Link} to='/'>Sign Up</Button>{' '}
+
         </section>
     );
 }
