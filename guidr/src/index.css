@@ -2,6 +2,11 @@ header h1 {
     text-align: center;
 }
 
+.paragraph-styler {
+    text-align: center;
+    margin: 5px;
+}
+
 section > .homePageButton {
     color: #9f7462;
     border-radius: 10px;
