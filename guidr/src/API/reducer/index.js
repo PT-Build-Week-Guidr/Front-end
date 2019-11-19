@@ -5,7 +5,7 @@ import {
 } from "../actions/fetching";
 
 const initialState = {
-  trips: {},
+  trips: [],
   isFetching: false,
   error: "",
 };
@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        trips: action.res,
+        trips: action.payload,
         error: ""
       };
     case FETCH_FAILURE:
