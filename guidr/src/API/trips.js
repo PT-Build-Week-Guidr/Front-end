@@ -7,17 +7,17 @@ const Trips = props => {
   useEffect(() => {
     props.FetchTrips();
   }, []);
-  const tripList = props.trips;
+  const TripList = props.trips;
 
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
   // public trips working
-  console.log(props.trips);
+  console.log(props);
 
   return (
     <div>
-      {tripList.map(trip => {
+      {TripList.map(trip => {
         return (
           <TripCard
             key={trip.id}
@@ -38,9 +38,9 @@ const Trips = props => {
 
 const mapStateToProps = state => {
   return {
-    trips: state.trips,
-    isFetching: state.isFetching,
-    error: state.error
+    trips: state.GetPublicTrips.trips,
+    isFetching: state.GetPublicTrips.isFetching,
+    error: state.GetPublicTrips.error
   };
 };
 
