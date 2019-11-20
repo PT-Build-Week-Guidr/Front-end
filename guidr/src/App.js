@@ -15,9 +15,8 @@ import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 import UserCardMain from './components/usercard.js';
 
+import Login from "./API/login";
 
-import WelcomePage from "./components/WelcomePage";
-import HomePage from "./components/HomePage";
 
 function App() {
 

@@ -8,6 +8,7 @@ import temp from '../images/icon.png';
 
 
 
+
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
 

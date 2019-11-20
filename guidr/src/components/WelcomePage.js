@@ -3,27 +3,16 @@ import { Button } from 'reactstrap';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
-
+import {withFormik, Form, Field} from "formik";
+import * as Yup from "yup";
+import logo from '../images/logo.png';
 
 function WelcomePage() {
-
-    const [userAuth, setUserAuth] = useState({
-        username: "",
-        password: "",
-      });
-    
-      const handleChange = event => {
-        setUserAuth({
-          ...userAuth,
-          [event.target.name]: event.target.value
-        });
-      };
- 
 
       const handleSubmit = event => {
         event.preventDefault();
         api()
-          .post("https://guidr-project.herokuapp.com/users/login", userAuth)
+          .post("https://guidr-project.herokuapp.com/users/login", {})
           .then(res => {
             console.log(res.data.token)
             console.log(res.data.id)
@@ -39,20 +28,17 @@ function WelcomePage() {
 
     return (
         <section >
-            
-            <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
+            <img className="img-align" src={logo} alt="Guidr Logo"></img>
             <br />
             <h1>Welcome to Guidr!</h1>
             <br />
-            <form onSubmit={handleSubmit} className="login-form">
+            <Form onSubmit={handleSubmit} className="login-form">
                 <label>
                     Username:
                 <input
                         type="text"
                         name="username"
-                        placeholder="username"
-                        value={userAuth.username}
-                        onChange={handleChange}
+                        placeholder="Username"
                     />
                 </label>
                 <br />
@@ -63,13 +49,13 @@ function WelcomePage() {
                          type="text"
                          name="password"
                          placeholder="Password"
-                         value={userAuth.password}
-                         onChange={handleChange}
                     />
                 </label>
+                <br/>
+                <br/>
                 <button color="success" tag={Link} to='/'>Submit</button>{' '}
 
-            </form>
+            </Form>
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
