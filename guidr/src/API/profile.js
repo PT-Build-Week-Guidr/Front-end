@@ -18,12 +18,11 @@ const Profile = (props) => {
     useEffect(() => {
       props.PostTrip();
     }, []);
-    const tripList = props.postedTrips;
+    const tripList = props.newPostedTrips;
   
     if (props.isFetching) {
       return <p>Loading trips</p>;
     }
-    // public trips working
     console.log(props.postedTrips);
 
 
@@ -108,9 +107,9 @@ const Profile = (props) => {
 
 const mapStateToProps = state => {
   return {
-    postedTrips: state.postedTrips,
-    isFetching: state.isFetching,
-    error: state.error
+    newPostedTrips: state.PostedTrips.newPostedTrips,
+    isFetching: state.PostedTrips.isFetching,
+    error: state.PostedTrips.error
   };
 };
 
