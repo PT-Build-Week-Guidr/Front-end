@@ -12,18 +12,18 @@ const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
 
 
-  console.log('it works.. sorta!');
+
 
   useEffect(() => {
     props.FetchTrips();
   }, []);
-  // const tripList = props.trips;
+  const tripList = props.trips;
 
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
-
-  console.log("travelcard", props.trips);
+  console.log('TravelCardMain', tripList[0]);
+  console.log("travelcard", props);
 
 
 
@@ -33,13 +33,14 @@ const TravelCardMain = (props) => {
   return (
     <div>
 
-        {props.trips.map(trip => {
+        {tripList.map(trip => {
           return (
 
             <TripDetails
               key={trip.id}
               trip={trip.id}
               title={trip.title}
+              full_name={trip.full_name}
               description={trip.description}
               type={trip.type}
               start_date={trip.start_date}
@@ -60,9 +61,9 @@ const TravelCardMain = (props) => {
 
 const mapStateToProps = state => {
   return {
-    trips: state.trips,
-    isFetching: state.isFetching,
-    error: state.error
+    trips: state.GetPublicTrips.trips,
+    isFetching: state.GetPublicTrips.isFetching,
+    error: state.GetPublicTrips.error
   };
 };
 
@@ -70,19 +71,22 @@ const mapStateToProps = state => {
 
 
 function TripDetails(props){
-  // const {title, description, isPrivate, isProfessional, images, duration, distance, date, tripType} = trips;
-  // const ref = `/character/${trip.id}`;
+  const ref = `/users/${props.trip}/trips/`;
 
   // function characterSelect(){
   //   // console.log(character.id);
   // }
 
   return (
-    <Media className="travel-list" href="#">
+
+
+    <Media className="travel-list" href={ref}>
         <Media left >
-            <Media object data-src={temp} alt="Generic placeholder image" />
+            <Media> {props.full_name} </Media>
+
         </Media>
         <Media body>
+
           <Media heading>
             {props.title}
           </Media>

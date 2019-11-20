@@ -19,38 +19,21 @@ const UserCardMain = props => {
 
     }];
 
-  const curTrips = [{
-        title: "My Real Trip",
-  			description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-  			isPrivate: false, //true means no one else can see this because it is private
-  			isProfessional: true, //means this was a business trip?
-  			images: "yes",
-  			duration: 21, //measured in days
-  			distance: 42, // this value is in miles
-  			date: "11/12/19",
-  			tripType: "Climbing"
 
-    }, {
-      title: "My Real Trip",
-      description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-      isPrivate: false, //true means no one else can see this because it is private
-      isProfessional: true, //means this was a business trip?
-      images: "yes",
-      duration: 21, //measured in days
-      distance: 42, // this value is in miles
-      date: "11/12/19",
-      tripType: "Climbing"
-    }];
 
   console.log("usercardmain", props);
+
   useEffect(() => {
     props.FetchTrips();
   }, []);
-  // const tripList = props.trips;
+  
+  const tripList = props.trips;
+  console.log("usercardmain props match:", props.match.params.id);
 
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
+
   console.log("usercardmain2", props.trips);
 
   return (
@@ -81,21 +64,20 @@ const UserCardMain = props => {
         </Row>
         <Row>
           <Col>
-          {props.trips.map(trip => {
-            return (
+
               <TripDetails
-                key={trip.id}
-                trip={trip.id}
-                title={trip.title}
-                description={trip.description}
-                type={trip.type}
-                start_date={trip.start_date}
-                end_date={trip.end_date}
-                duration_hours={trip.duration_hours}
-                duration_days={trip.duration_days}
+                key={props.id}
+                trip={props.id}
+                title={props.title}
+                description={props.description}
+                type={props.type}
+                start_date={props.start_date}
+                end_date={props.end_date}
+                duration_hours={props.duration_hours}
+                duration_days={props.duration_days}
               />
-            );
-          })}
+
+
           </Col>
         </Row>
 
@@ -107,9 +89,9 @@ const UserCardMain = props => {
 
 const mapStateToProps = state => {
   return {
-    trips: state.trips,
-    isFetching: state.isFetching,
-    error: state.error
+    trips: state.GetPublicTrips.trips,
+    isFetching: state.GetPublicTrips.isFetching,
+    error: state.GetPublicTrips.error
   };
 };
 
@@ -132,7 +114,9 @@ function TripDetails(props){
 
             <br />
             {props.description}
-            <p>Visited on: {props.end_date}</p>
+            <p>
+              Visited on: {props.end_date}
+            </p>
 
             <p>Type of Trip: {props.type}</p>
 

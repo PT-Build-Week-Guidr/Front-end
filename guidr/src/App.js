@@ -15,9 +15,7 @@ import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 import UserCardMain from './components/usercard.js';
 
-
-import WelcomePage from "./components/WelcomePage";
-import HomePage from "./components/HomePage";
+import Login from './API/login.js';
 
 function App() {
 
@@ -26,10 +24,10 @@ function App() {
 
       <div className="App">
 
-        {/*<APITest />*/}
 
-    
-    
+
+
+
         <Route path= "/login/" render={props=>
             <div>
               <NavBar
@@ -50,7 +48,7 @@ function App() {
             </div>
           }
         />
-    
+
         <Route path= "/profile/" render={props=>
             <div>
               <NavBar
@@ -71,7 +69,7 @@ function App() {
             </div>
           }
         />
-     
+
         <Route exact path="/" render={props =>
           <div>
             <NavBar
@@ -90,44 +88,64 @@ function App() {
             />
           </div>
         } />
+
         <PrivateRoute>
-        <Route exact path="/home" render={props =>
-          <div>
-            <NavBar
+          <Route exact path="/home" render={props =>
+            <div>
+              <NavBar
 
-            />
-            <br />
-            <br />
-            <HomePage
-              {...props}
+              />
+              <br />
+              <br />
+              <HomePage
+                {...props}
 
-            />
-            <br />
-            <br />
-            <Footer
+              />
+              <br />
+              <br />
+              <Footer
 
-            />
-          </div>
-        } />
+              />
+            </div>
+          } />
 
-        <Route exact path="/trips" render={props =>
-          <div>
-            <NavBar
+          <Route exact path="/trips" render={props =>
+            <div>
+              <NavBar
 
-            />
-            <br />
-            <br />
-            <TravelPage
-              {...props}
+              />
+              <br />
+              <br />
+              <TravelPage
+                {...props}
 
-            />
-            <br />
-            <br />
-            <Footer
+              />
+              <br />
+              <br />
+              <Footer
 
-            />
-          </div>
-        } />
+              />
+            </div>
+          } />
+
+          <Route path="/users/:id/trips" render={props =>
+            <div>
+              <NavBar
+
+              />
+              <br />
+              <br />
+              <ProfilePage
+                {...props}
+
+              />
+              <br />
+              <br />
+              <Footer
+
+              />
+            </div>
+          } />
 
       </PrivateRoute>
       </div>
