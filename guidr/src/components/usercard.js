@@ -107,9 +107,9 @@ const UserCardMain = props => {
 
 const mapStateToProps = state => {
   return {
-    trips: state.trips,
-    isFetching: state.isFetching,
-    error: state.error
+    trips: state.GetPublicTrips.trips,
+    isFetching: state.GetPublicTrips.isFetching,
+    error: state.GetPublicTrips.error
   };
 };
 

@@ -14,7 +14,7 @@ export const userSignUp = dispatch => {
       .then(res => {
         console.log(res.data.token)
         console.log(res.data.id)
-        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("new user token", res.data.token)
         localStorage.setItem("id", res.data.id)
         dispatch({ type: POST_SUCCESS, payload: res.data })
       })
