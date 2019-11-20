@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { PostTrip } from "../API/actions/posting";
 
-const Profile = () => {
+const Profile = (props) => {
   const [newTrip, setNewTrip] = useState({
-    id: 2,
+    id: 1,
     title: "",
     description: "",
     private: "",
@@ -12,6 +14,18 @@ const Profile = () => {
     duration_hours: "",
     duration_days: ""
   });
+
+    useEffect(() => {
+      props.PostTrip();
+    }, []);
+    const tripList = props.postedTrips;
+  
+    if (props.isFetching) {
+      return <p>Loading trips</p>;
+    }
+    // public trips working
+    console.log(props.postedTrips);
+
 
  
   const handleChange = event => {
@@ -91,4 +105,15 @@ const Profile = () => {
     </div>
   );
 };
-export default Profile;
+
+const mapStateToProps = state => {
+  return {
+    postedTrips: state.postedTrips,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+const mapDispatchToProps = { PostTrip };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

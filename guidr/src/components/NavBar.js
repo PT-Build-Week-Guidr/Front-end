@@ -12,12 +12,14 @@ const NavBar = () =>  {
     }
     return (
         <div>
+
             <Navbar className="guidr-green" >
                 <NavbarBrand href="/" className="mr-auto"><img className="guidr-logo" src={logo} width='120' height='50' alt="guider logo" /></NavbarBrand>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2">
                   <img className="guidr-logo" src={icon} width='80' height='60' alt="profile nav button"/>
                 </NavbarToggler>
                 <Collapse isOpen={collapsed} onClick={menuClick} >
+
                     <Nav navbar>
                         <NavItem className="guidr-green2">
                             <NavLink href="/trips/">Trips</NavLink>

@@ -1,39 +1,13 @@
-import {
-  START_FETCHING,
-  FETCH_SUCCESS,
-  FETCH_FAILURE
-} from "../actions/fetching";
+import {combineReducers} from "redux"
+import GetPublicTrips from "./getPublicTrips";
+import PostedTrips from "./postTrips";
 
-const initialState = {
-  trips: [],
-  isFetching: false,
-  error: "",
-};
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case START_FETCHING:
-      return {
-        ...state,
-        isFetching: true,
-        error: ""
-      };
-    case FETCH_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        trips: action.payload,
-        error: ""
-      };
-    case FETCH_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        error: action.payload
-      };
-    default:
-      return state;
-  };
-};
+const reducer = combineReducers({
+  GetPublicTrips,
+  PostedTrips
+})
+
+
 
 export default reducer;

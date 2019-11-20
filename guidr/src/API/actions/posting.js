@@ -4,7 +4,7 @@ export const START_POSTING = 'START_POSTING';
 export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_FAILURE = 'POST_FAILURE';
 
-export const postRoster = () => dispatch => {
+export const PostTrip = () => dispatch => {
     dispatch({ type: START_POSTING })
     api().post("https://guidr-project.herokuapp.com/users/:1/trips", {
         headers: {

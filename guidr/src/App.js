@@ -1,4 +1,3 @@
-import Login from "./API/login";
 import { Link, Route } from "react-router-dom";
 import Profile from "./API/profile"
 import PrivateRoute  from "./API/ProtectedRoute";
@@ -17,6 +16,9 @@ import TravelPage from './components/travelpage.js';
 import UserCardMain from './components/usercard.js';
 
 
+import WelcomePage from "./components/WelcomePage";
+import HomePage from "./components/HomePage";
+
 function App() {
 
   return (
@@ -26,6 +28,8 @@ function App() {
 
         {/*<APITest />*/}
 
+    
+    
         <Route path= "/login/" render={props=>
             <div>
               <NavBar
@@ -46,7 +50,7 @@ function App() {
             </div>
           }
         />
-
+    
         <Route path= "/profile/" render={props=>
             <div>
               <NavBar
@@ -67,7 +71,7 @@ function App() {
             </div>
           }
         />
-
+     
         <Route exact path="/" render={props =>
           <div>
             <NavBar
@@ -86,7 +90,7 @@ function App() {
             />
           </div>
         } />
-
+        <PrivateRoute>
         <Route exact path="/home" render={props =>
           <div>
             <NavBar
@@ -125,9 +129,8 @@ function App() {
           </div>
         } />
 
-
+      </PrivateRoute>
       </div>
-
 
   )
 };
