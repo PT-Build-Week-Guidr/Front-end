@@ -1,90 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-// import {Link} from 'react-router-dom';
-import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
-  CardTitle, CardText, Media} from 'reactstrap';
+import { connect } from "react-redux";
+import { FetchTrips } from "../API/actions/fetching";
+
+import {Media} from 'reactstrap';
+import temp from '../images/icon.png';
 
 
 
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
-  const [curProfile, setCurProfile] = useState([{
-    proImage:"./images/logo.png",
-    title: "Michael Martin",
-    tagline: "Making Mountains My Mole Hills!",
-    guideSpecialty: "Climbing",
-    age: 30,
-    yearsExperience: 10
 
-  }]);
-
-  const [curTrips, setCurTrips] = useState([{
-      title: "My Real Trip",
-			description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-			isPrivate: false, //true means no one else can see this because it is private
-			isProfessional: true, //means this was a business trip?
-			images: "yes",
-			duration: 21, //measured in days
-			distance: 42, // this value is in miles
-			date: "11/12/19",
-			tripType: "Climbing"
-
-  }, {
-    title: "My Real Trip",
-    description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-    isPrivate: false, //true means no one else can see this because it is private
-    isProfessional: true, //means this was a business trip?
-    images: "yes",
-    duration: 21, //measured in days
-    distance: 42, // this value is in miles
-    date: "11/12/19",
-    tripType: "Climbing"
-  }]);
-  // setCurProfile(props);
 
   console.log('it works.. sorta!');
 
-  return(
-    <Container>
-      <Row>
-        <Col>
-          <img src={curProfile[0].proImage} alt={curProfile[0].title} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>{curProfile[0].title}</h2>
-          <p>"{curProfile[0].tagline}"</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <p>Specialty: {curProfile[0].guideSpecialty}</p>
-          <p>Age: {curProfile[0].age}</p>
-          <p>Years Experience: {curProfile[0].yearsExperience}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>My Trips:</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          {curTrips.map(trips =>(
-            <TripDetails key={trips.id} trips={trips} />
-          ))
-          }
-        </Col>
-      </Row>
+  useEffect(() => {
+    props.FetchTrips();
+  }, []);
+  // const tripList = props.trips;
 
-    </Container>
+  if (props.isFetching) {
+    return <p>Loading trips</p>;
+  }
+
+  console.log("travelcard", props.trips);
+
+
+
+
+
+
+  return (
+    <div>
+
+        {props.trips.map(trip => {
+          return (
+
+            <TripDetails
+              key={trip.id}
+              trip={trip.id}
+              title={trip.title}
+              description={trip.description}
+              type={trip.type}
+              start_date={trip.start_date}
+              end_date={trip.end_date}
+              duration_hours={trip.duration_hours}
+              duration_days={trip.duration_days}
+            />
+
+          );
+        })}
+        <br />
+
+
+    </div>
   );
 
 };
 
-function TripDetails({ trips }){
-  const {title, description, isPrivate, isProfessional, images, duration, distance, date, tripType} = trips;
+const mapStateToProps = state => {
+  return {
+    trips: state.trips,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+
+
+
+function TripDetails(props){
+  // const {title, description, isPrivate, isProfessional, images, duration, distance, date, tripType} = trips;
   // const ref = `/character/${trip.id}`;
 
   // function characterSelect(){
@@ -92,36 +78,24 @@ function TripDetails({ trips }){
   // }
 
   return (
+    <Media className="travel-list" href="#">
+        <Media left >
+            <Media object data-src={temp} alt="Generic placeholder image" />
+        </Media>
+        <Media body>
+          <Media heading>
+            {props.title}
+          </Media>
+          {props.type}
+          <p>{props.description}</p>
 
-      <div className="trip-card">
-      <Card>
-        <CardHeader tag="h3">{title}</CardHeader>
-        <CardBody>
-          <CardTitle>{title}</CardTitle>
-          <CardText>
-            <img src={images} alt={title} />
-            <br />
-            {description}
-            <p>Visited on: {date}</p>
-            <p>Was There For: {duration} days</p>
-            <p>Traveled: {distance} miles</p>
-            <p>Type of Trip: {tripType}</p>
+            <span>{props.start_date} - {props.end_date}</span>
+        </Media>
+
+    </Media>
 
 
-          </CardText>
 
-        </CardBody>
-        <CardFooter className="text-muted">
-          <Button>View Details</Button>
-          <br />
-          <br />
-          <Button>Edit</Button>
-        </CardFooter>
-      </Card>
-
-          <br />
-          <br />
-      </div>
 
 
   );
@@ -129,4 +103,6 @@ function TripDetails({ trips }){
 
 
 
-export default TravelCardMain;
+const mapDispatchToProps = { FetchTrips };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TravelCardMain);
