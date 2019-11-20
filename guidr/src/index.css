@@ -30,3 +30,35 @@ section > .homePageButton {
     margin: 5px;
 }
 
+.guidr-green {
+  background-color: white;
+  border-bottom: 3px solid #00A693;
+
+}
+.guidr-green2 a {
+  background-color: white;
+  color: #00A693;
+  text-decoration: none;
+
+}
+
+.guidr-green2 a:hover {
+  background-color: #00A693;
+  color: white;
+  text-decoration: none;
+
+
+}
+
+.travel-list{
+  margin-bottom: 20px;
+  width: 70%;
+  border: 2px solid #00A693;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 20px;
+}
+
+.mr-2-guidr{
+  background-image: url("./images/icon.png");
+}

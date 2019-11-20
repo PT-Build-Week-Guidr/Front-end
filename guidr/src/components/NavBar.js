@@ -1,23 +1,31 @@
 import React, {useState} from 'react';
 import { NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Navbar } from 'reactstrap';
-
+import icon from '../images/icon.png';
+import logo from '../images/logo.png';
 const NavBar = () =>  {
 
-    const {collapsed, setCollapsed} = useState(true);
-    const toggleNavbar = () => setCollapsed(!collapsed)
-
+    const [collapsed, setCollapsed] = useState(false);
+    const toggleNavbar = () => setCollapsed(!collapsed);
+    const menuClick = () =>{
+      console.log(collapsed);
+      setCollapsed(collapsed);
+    }
     return (
         <div>
-            <Navbar color="success" dark>
-                <NavbarBrand href="/" className="mr-auto"><img className="img-align" src="./images/icon.png" width='50' height='50' alt="User Icon"></img></NavbarBrand>
-                <NavbarToggler onclick={toggleNavbar} className="mr-2" />
-                <Collapse isOpen={!collapsed} navbar>
+
+            <Navbar className="guidr-green" >
+                <NavbarBrand href="/" className="mr-auto"><img className="guidr-logo" src={logo} width='120' height='50' alt="guider logo" /></NavbarBrand>
+                <NavbarToggler onClick={toggleNavbar} className="mr-2">
+                  <img className="guidr-logo" src={icon} width='80' height='60' alt="profile nav button"/>
+                </NavbarToggler>
+                <Collapse isOpen={collapsed} onClick={menuClick} >
+
                     <Nav navbar>
-                        <NavItem>
-                            <NavLink href="#">Trips</NavLink>
+                        <NavItem className="guidr-green2">
+                            <NavLink href="/trips/">Trips</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Profile</NavLink>
+                        <NavItem className="guidr-green2">
+                            <NavLink href="/profile/">Profile</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
