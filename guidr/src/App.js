@@ -62,6 +62,7 @@ function App() {
         )}
       />
       <PrivateRoute>
+        <Profile />
         <Route
           exact
           path="/home"
