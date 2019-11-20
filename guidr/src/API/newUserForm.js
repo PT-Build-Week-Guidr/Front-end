@@ -21,10 +21,7 @@ const SignUp = () => {
     api()
       .post("https://guidr-project.herokuapp.com/users/signUp", userAuth)
       .then(res => {
-        console.log(res.data.token);
-        console.log(res.data.id);
-        localStorage.setItem("new user token", res.data.token);
-        localStorage.setItem("new user id", res.data.id);
+       console.log(res)
       })
       .catch(err => {
         console.log(err);
