@@ -3,16 +3,14 @@ import { Link, Route } from "react-router-dom";
 import Profile from "./API/profile"
 import PrivateRoute  from "./API/ProtectedRoute";
 import Trips from "./API/trips";
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-
 import APITest from './components/apiTest.js';
-
-
-//Load in the custom components here please
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
+
 import NavBar from './components/NavBar.js';
+
 import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
@@ -20,8 +18,6 @@ import UserCardMain from './components/usercard.js';
 
 
 function App() {
-
-
 
   return (
 
