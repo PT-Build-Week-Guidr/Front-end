@@ -1,7 +1,7 @@
 import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import Profile from "./API/profile"
 import PrivateRoute  from "./API/ProtectedRoute";
-import Trips from "./API/trips";
+
 import React from 'react';
 import './App.css';
 import APITest from './components/apiTest.js';
@@ -18,7 +18,6 @@ import UserCardMain from './components/usercard.js';
 import Login from './API/login.js';
 
 function App() {
-
   return (
 
     <BrowserRouter>
@@ -107,20 +106,13 @@ function App() {
 
         <Route exact path="/" render={props =>
           <div>
-            <NavBar
-
-            />
+            <NavBar />
             <br />
             <br />
-            <WelcomePage
-              {...props}
-
-            />
+            <Login {...props} />
             <br />
             <br />
-            <Footer
-
-            />
+            <Footer />
           </div>
         } />
 
@@ -182,6 +174,21 @@ function App() {
             </div>
           } />
 
+        <Route
+          exact
+          path="/trips"
+          render={props => (
+            <div>
+              <NavBar />
+              <br />
+              <br />
+              <TravelPage {...props} />
+              <br />
+              <br />
+              <Footer />
+            </div>
+          )}
+        />
       </PrivateRoute>
       </div> */}
 

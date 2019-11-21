@@ -1,33 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { PostTrip } from "../API/actions/posting";
+import React, { useState } from "react";
+import api from "./axiosHeader";
 
-const Profile = (props) => {
+const Profile = props => {
   const [newTrip, setNewTrip] = useState({
-    id: 1,
     title: "",
     description: "",
-    private: "",
+    private: true,
     type: "",
     start_date: "",
     end_date: "",
-    duration_hours: "",
-    duration_days: ""
+    duration_hours: 0,
+    duration_days: 0
   });
 
-    useEffect(() => {
-      props.PostTrip();
-    }, []);
-    const tripList = props.postedTrips;
-  
-    if (props.isFetching) {
-      return <p>Loading trips</p>;
-    }
-    // public trips working
-    console.log(props.postedTrips);
+  if (props.isFetching) {
+    return <p>Loading trips</p>;
+  }
 
-
- 
   const handleChange = event => {
     setNewTrip({
       ...newTrip,
@@ -37,8 +26,15 @@ const Profile = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setNewTrip(newTrip)
-    console.log(newTrip)
+    const id = localStorage.getItem("id");
+    api()
+      .post(`https://guidr-project.herokuapp.com/users/${id}/trips`, newTrip)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
   };
 
   return (
@@ -61,7 +57,7 @@ const Profile = (props) => {
         <input
           onChange={handleChange}
           value={newTrip.private}
-          type="text"
+          type="checkbox"
           name="private"
           placeholder="private"
         />
@@ -76,7 +72,7 @@ const Profile = (props) => {
           onChange={handleChange}
           value={newTrip.start_date}
           type="date"
-          name="Start_date"
+          name="start_date"
           placeholder="start_date"
         />
         <input
@@ -89,14 +85,14 @@ const Profile = (props) => {
         <input
           onChange={handleChange}
           value={newTrip.duration_hours}
-          type="text"
+          type="number"
           name="duration_hours"
           placeholder="duration_hours"
         />
         <input
           onChange={handleChange}
           value={newTrip.duration_days}
-          type="text"
+          type="number"
           name="duration_days"
           placeholder="duration_days"
         />
@@ -106,14 +102,4 @@ const Profile = (props) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    postedTrips: state.postedTrips,
-    isFetching: state.isFetching,
-    error: state.error
-  };
-};
-
-const mapDispatchToProps = { PostTrip };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default Profile;

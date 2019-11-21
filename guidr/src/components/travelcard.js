@@ -100,10 +100,6 @@ function TripDetails(props){
 
     </Media>
 
-
-
-
-
   );
 }
 

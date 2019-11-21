@@ -2,8 +2,20 @@ import React, { useEffect, useState } from "react";
 // import TripCard from "./addTrip";
 import { connect } from "react-redux";
 import { FetchTrips } from "../API/actions/fetching";
-import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
- CardTitle, CardText} from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardTitle,
+  CardText
+} from "reactstrap";
+import DeleteTrips from "../API/actions/delete";
+import TripDetails from "../API/deleteTrips";
 
 const UserCardMain = props => {
 
@@ -54,56 +66,61 @@ const UserCardMain = props => {
   }
 
   // console.log("usercardmain2", props.trips);
+  if(curProfile[0]!=undefined){
+      return (
+        <div>
+          <Container>
+            <Row>
+              <Col>
 
-  return (
-    <div>
-      <Container>
-        <Row>
-          <Col>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h2>{curProfile[0].title}</h2>
+                <p>"{curProfile[0].tagline}"</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>Specialty: {curProfile[0].guideSpecialty}</p>
+                <p>Age: {curProfile[0].age}</p>
+                <p>Years Experience: {curProfile[0].yearsExperience}</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h2>My Trips:</h2>
+              </Col>
+          </Row>
+          <Row>
+            <Col>
 
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>{curProfile.title}</h2>
-            <p>"{curProfile.tagline}"</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>Specialty: {curProfile.guideSpecialty}</p>
-            <p>Age: {curProfile.age}</p>
-            <p>Years Experience: {curProfile.yearsExperience}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>My Trips:</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-
-              <TripDetails
-                key={curProfile.id}
-                trip={curProfile.id}
-                title={curProfile.title}
-                description={curProfile.description}
-                type={curProfile.type}
-                start_date={curProfile.start_date}
-                end_date={curProfile.end_date}
-                duration_hours={curProfile.duration_hours}
-                duration_days={curProfile.duration_days}
-              />
+                <TripDetails2
+                  key={curProfile[0].id}
+                  trip={curProfile[0].id}
+                  title={curProfile[0].title}
+                  description={curProfile[0].description}
+                  type={curProfile[0].type}
+                  start_date={curProfile[0].start_date}
+                  end_date={curProfile[0].end_date}
+                  duration_hours={curProfile[0].duration_hours}
+                  duration_days={curProfile[0].duration_days}
+                />
 
 
-          </Col>
-        </Row>
-
-      </Container>
-
-    </div>
-  );
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  } else {
+    return(
+      <div>
+        You need to make a selection
+      </div>
+    );
+  };
 };
 
 const mapStateToProps = state => {
@@ -114,7 +131,7 @@ const mapStateToProps = state => {
   };
 };
 
-function TripDetails(props){
+function TripDetails2(props){
   // const {title, description, duration_day, duration_hours, end_date, type} = trips;
   // const ref = `/character/${trip.id}`;
 
@@ -132,12 +149,13 @@ function TripDetails(props){
           <CardText>
 
             <br />
-            {props.description}
-            <p>
+              {props.description}
+            <br />
               Visited on: {props.end_date}
-            </p>
 
-            <p>Type of Trip: {props.type}</p>
+
+            <br />
+              Type of Trip: {props.type}
 
 
           </CardText>
@@ -159,101 +177,6 @@ function TripDetails(props){
   );
 }
 
-const mapDispatchToProps = { FetchTrips };
+const mapDispatchToProps = { FetchTrips, DeleteTrips };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCardMain);
-
-
-
-// import React, { useEffect, useState } from "react";
-//
-// // import {Link} from 'react-router-dom';
-// import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
-//   CardTitle, CardText} from 'reactstrap';
-//
-// import temp from '../images/logo.png';
-//
-// import FetchTrips from '../API/actions/fetching.js';
-//
-// const UserCardMain = (props) => {
-//   //define the current profile as contained in this component fill it with info for debug purposes
-//   const [curProfile, setCurProfile] = useState([{
-//     proImage:temp,
-//     title: "Michael Martin",
-//     tagline: "Making Mountains My Mole Hills!",
-//     guideSpecialty: "Climbing",
-//     age: 30,
-//     yearsExperience: 10
-//
-//   }]);
-//
-//   const [curTrips, setCurTrips] = useState([{
-//       title: "My Real Trip",
-// 			description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-// 			isPrivate: false, //true means no one else can see this because it is private
-// 			isProfessional: true, //means this was a business trip?
-// 			images: "yes",
-// 			duration: 21, //measured in days
-// 			distance: 42, // this value is in miles
-// 			date: "11/12/19",
-// 			tripType: "Climbing"
-//
-//   }, {
-//     title: "My Real Trip",
-//     description: "This was my very REAL very cool trip that really happen, totally my real favorite!",
-//     isPrivate: false, //true means no one else can see this because it is private
-//     isProfessional: true, //means this was a business trip?
-//     images: "yes",
-//     duration: 21, //measured in days
-//     distance: 42, // this value is in miles
-//     date: "11/12/19",
-//     tripType: "Climbing"
-//   }]);
-//   // setCurProfile(props);
-//
-//   console.log('it works.. sorta!');
-//
-//   return(
-//     <Container>
-//       <Row>
-//         <Col>
-//           <img src={curProfile[0].proImage} alt={curProfile[0].title} />
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col>
-//           <h2>{curProfile[0].title}</h2>
-//           <p>"{curProfile[0].tagline}"</p>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col>
-//           <p>Specialty: {curProfile[0].guideSpecialty}</p>
-//           <p>Age: {curProfile[0].age}</p>
-//           <p>Years Experience: {curProfile[0].yearsExperience}</p>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col>
-//           <h2>My Trips:</h2>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col>
-//           {curTrips.map(trips =>(
-//             <TripDetails key={trips.id} trips={trips} />
-//           ))
-//           }
-//         </Col>
-//       </Row>
-//
-//     </Container>
-//   );
-//
-// };
-//
-
-//
-//
-//
-// export default UserCardMain;
