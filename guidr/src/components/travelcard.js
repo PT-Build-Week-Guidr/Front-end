@@ -6,7 +6,7 @@ import { FetchTrips } from "../API/actions/fetching";
 import {Media} from 'reactstrap';
 import temp from '../images/icon.png';
 
-
+import { Link } from "react-router-dom";
 
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
@@ -81,8 +81,10 @@ function TripDetails(props){
 
 
     <Media className="travel-list" href={ref}>
-        <Media left >
-            <Media> {props.full_name} </Media>
+
+        <Media left className="travel-name">
+
+            <Media> Guidr: {props.full_name} </Media>
 
         </Media>
         <Media body>

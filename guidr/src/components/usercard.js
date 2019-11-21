@@ -9,52 +9,71 @@ const UserCardMain = props => {
 
   // const [curProfile, setCurProfile] = useState([]);
   // const [curTrips, setCurTrips] = useState([]);
-  const curProfile = [{
-      proImage:"temp",
-      title: "Michael Martin",
-      tagline: "Making Mountains My Mole Hills!",
-      guideSpecialty: "Climbing",
-      age: 30,
-      yearsExperience: 10
+  const tripList = props.trips;
+  let hasRun = 0;
+  let curProfile = tripList;
 
-    }];
+  useEffect(()=> {
+    let curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
+    // setCurProfile(tripList.filter(it => `${it.id}`===`${props.match.params.id}`));
+    console.log("here!", tripList.filter(it => `${it.id}`===`${props.match.params.id}`))
+    hasRun = 1;
+  }, [props.match.params.id])
+
+  // console.log("props match id", props.match.params.id);
+
+
+  // useEffect(() => {
+  //   tripList.forEach(trip =>{
+  //     console.log(trip.id);
+  //     if (`${trip.id}` === `${props.match.params.id}`){
+  //       setCurProfile(trip);
+  //     }
+  //   })
+  //
+  // }, [props.match.params.id]);
 
 
 
-  console.log("usercardmain", props);
+
+  console.log("usercardmain", curProfile[0], hasRun);
+  if (hasRun === 1){
+    console.log("usercardmain", curProfile[0]);
+  }
 
   useEffect(() => {
     props.FetchTrips();
   }, []);
-  
-  const tripList = props.trips;
-  console.log("usercardmain props match:", props.match.params.id);
+
+
+
+  // console.log("usercardmain props match:", props);
 
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
 
-  console.log("usercardmain2", props.trips);
+  // console.log("usercardmain2", props.trips);
 
   return (
     <div>
       <Container>
         <Row>
           <Col>
-            <img src={curProfile[0].proImage} alt={curProfile[0].title} />
+
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>{curProfile[0].title}</h2>
-            <p>"{curProfile[0].tagline}"</p>
+            <h2>{curProfile.title}</h2>
+            <p>"{curProfile.tagline}"</p>
           </Col>
         </Row>
         <Row>
           <Col>
-            <p>Specialty: {curProfile[0].guideSpecialty}</p>
-            <p>Age: {curProfile[0].age}</p>
-            <p>Years Experience: {curProfile[0].yearsExperience}</p>
+            <p>Specialty: {curProfile.guideSpecialty}</p>
+            <p>Age: {curProfile.age}</p>
+            <p>Years Experience: {curProfile.yearsExperience}</p>
           </Col>
         </Row>
         <Row>
@@ -66,15 +85,15 @@ const UserCardMain = props => {
           <Col>
 
               <TripDetails
-                key={props.id}
-                trip={props.id}
-                title={props.title}
-                description={props.description}
-                type={props.type}
-                start_date={props.start_date}
-                end_date={props.end_date}
-                duration_hours={props.duration_hours}
-                duration_days={props.duration_days}
+                key={curProfile.id}
+                trip={curProfile.id}
+                title={curProfile.title}
+                description={curProfile.description}
+                type={curProfile.type}
+                start_date={curProfile.start_date}
+                end_date={curProfile.end_date}
+                duration_hours={curProfile.duration_hours}
+                duration_days={curProfile.duration_days}
               />
 
 

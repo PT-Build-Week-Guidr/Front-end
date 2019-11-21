@@ -1,4 +1,4 @@
-import { Link, Route } from "react-router-dom";
+import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import Profile from "./API/profile"
 import PrivateRoute  from "./API/ProtectedRoute";
 import Trips from "./API/trips";
@@ -21,33 +21,68 @@ function App() {
 
   return (
 
-
+    <BrowserRouter>
       <div className="App">
+        <NavBar />
+        <br />
+        <br />
 
+        <Switch>
+          <Route path= "/login/" render={props=>
+            <Login
+              {...props}
 
+            />
+          }
+          />
+          <Route path= "/profile/" render={props=>
+            <ProfilePage
+              {...props}
 
+            />
+          }
+          />
+          <Route exact path="/" render={props =>
+            <WelcomePage
+              {...props}
 
-
-        <Route path= "/login/" render={props=>
-            <div>
-              <NavBar
-
-              />
-              <br />
-              <br />
-              <Login
+            />
+          }
+          />
+          <PrivateRoute>
+            <Route exact path="/home" render={props =>
+              <HomePage
                 {...props}
 
+              />
+            }
+            />
+            <Route exact path="/trips/" render={props =>
+              <TravelPage
+                {...props}
 
               />
-              <br />
-              <br />
-              <Footer
+            }
+            />
+            <Route exact path="/users/:id/trips" render={props =>
+              <ProfilePage
+                {...props}
 
               />
-            </div>
-          }
+            }
+            />
+          </PrivateRoute>
+        </Switch>
+        <br />
+        <br />
+        <Footer />
+
         />
+        </div>
+      </BrowserRouter>
+    );
+};
+      {/*  />
 
         <Route path= "/profile/" render={props=>
             <div>
@@ -109,7 +144,7 @@ function App() {
             </div>
           } />
 
-          <Route exact path="/trips" render={props =>
+          <Route exact path="/trips/" render={props =>
             <div>
               <NavBar
 
@@ -128,7 +163,7 @@ function App() {
             </div>
           } />
 
-          <Route path="/users/:id/trips" render={props =>
+          <Route exact path="/users/:id/trips" render={props =>
             <div>
               <NavBar
 
@@ -148,9 +183,8 @@ function App() {
           } />
 
       </PrivateRoute>
-      </div>
+      </div> */}
 
-  )
-};
+
 
 export default App;
