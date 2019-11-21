@@ -17,7 +17,7 @@ const TravelCardMain = (props) => {
   useEffect(() => {
     props.FetchTrips();
   }, []);
-  // const tripList = props.trips;
+  const tripList = props.trips;
 
   if (props.isFetching) {
     return <p>Loading trips</p>;
@@ -33,7 +33,7 @@ const TravelCardMain = (props) => {
   return (
     <div>
 
-        {props.trips.map(trip => {
+        {tripList.map(trip => {
           return (
 
             <TripDetails
@@ -60,9 +60,9 @@ const TravelCardMain = (props) => {
 
 const mapStateToProps = state => {
   return {
-    trips: state.trips,
-    isFetching: state.isFetching,
-    error: state.error
+    trips: state.GetPublicTrips.trips,
+    isFetching: state.GetPublicTrips.isFetching,
+    error: state.GetPublicTrips.error
   };
 };
 
@@ -93,10 +93,6 @@ function TripDetails(props){
         </Media>
 
     </Media>
-
-
-
-
 
   );
 }

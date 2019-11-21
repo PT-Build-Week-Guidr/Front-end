@@ -4,8 +4,9 @@ export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
 export const FetchTrips = () => dispatch => {
+  const id = localStorage.getItem("id");
     dispatch({ type: START_FETCHING })
-    api().get("https://guidr-project.herokuapp.com/trips", {
+    api().get(`https://guidr-project.herokuapp.com/users/${id}/trips`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         }
