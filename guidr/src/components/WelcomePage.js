@@ -3,29 +3,38 @@ import { Button } from 'reactstrap';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
-import {withFormik, Form, Field} from "formik";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
 import SignUp from "../API/newUserForm"
+import { connect } from 'react-redux';
 
-function WelcomePage() {
+const MyInnerForm = props => {
+   const {values, touched, errors} = props;
+   console.log(props, values, touched, errors);
 
-      const handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
         api()
-          .post("https://guidr-project.herokuapp.com/users/login", {})
-          .then(res => {
-            console.log(res.data.token)
-            console.log(res.data.id)
-            localStorage.setItem("token", res.data.token)
-            localStorage.setItem("id", res.data.id)
-    
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
-    
+            .post("https://guidr-project.herokuapp.com/users/login", {})
+            .then(res => {
+                console.log(res.data.token)
+                console.log(res.data.id)
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("id", res.data.id)
+
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    const {
+        handleReset,
+        isSubmitting,
+        handleChange,
+        dirty,
+    } = props;
 
     return (
         <section >
@@ -36,34 +45,61 @@ function WelcomePage() {
             <Form onSubmit={handleSubmit} className="login-form">
                 <label>
                     Username:
-                <input
+                <Field
                         type="text"
                         name="username"
-                        placeholder="Username"
+                        value={values.username}
+                        placeholder="username"
                     />
+                     {touched.username && errors.username && <p>{errors.username}</p>}
                 </label>
                 <br />
                 <br />
                 <label>
                     Password:
-                   <input
-                         type="text"
-                         name="password"
-                         placeholder="Password"
+                   <Field
+                        type="password"
+                        name="password"
+                        value={values.password}
+                        placeholder="password"
                     />
+                     {touched.password && errors.password && <p>{errors.password}</p>}
                 </label>
-                <br/>
-                <br/>
-                <button color="success" tag={Link} to='/'>Submit</button>{' '}
+                <br />
+                <br />
+                <button color="success" tag={Link} to='/' onClick={handleReset}
+                    disabled={!dirty || isSubmitting}
+                >Submit</button>{' '}
 
             </Form>
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
-            <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
+            <br />
+            <Button color="success" tag={Link} to='/signUp' onClick={handleReset} disabled={!dirty || isSubmitting} component={SignUp}>Sign Up</Button>{' '}
 
         </section>
     );
 }
+const EnchancedForm = withFormik({
+    mapPropsToValues: ({username, password}) => ({
+        username: username || "",
+        password: password || " ",
+    }),
+
+    validationSchema: Yup.object().shape({
+        username: Yup.string()
+            .max(20, 'Username must be shorter than 20 symbools')
+            .required('Username is required!'),
+
+        password: Yup.string()
+            .min(2, 'Invalid Password')
+            .max(10, 'Password must be shorter than 10 symbols')
+            .required('Password is required!'),
+    })
+
+})(MyInnerForm);
+
+const WelcomePage = connect()(EnchancedForm);
 
 export default WelcomePage;
