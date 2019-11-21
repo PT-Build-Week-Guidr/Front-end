@@ -15,8 +15,8 @@ const ProfilePage = (props) =>{
 
     <div>
       <UserCardMain
+        {...props}
 
-        
       />
     </div>
 
