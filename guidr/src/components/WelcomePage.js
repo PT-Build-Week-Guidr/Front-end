@@ -3,80 +3,103 @@ import { Button } from 'reactstrap';
 
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import logo from '../images/logo.png';
 import SignUp from "../API/newUserForm"
+import { connect } from 'react-redux';
 
-function WelcomePage() {
+const MyInnerForm = props => {
+   const {values, touched, errors} = props;
+   console.log(props, values, touched, errors);
 
-    const [userAuth, setUserAuth] = useState({
-        username: "",
-        password: "",
-      });
-
-      const handleChange = event => {
-        setUserAuth({
-          ...userAuth,
-          [event.target.name]: event.target.value
-        });
-      };
-
-
-      const handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
         api()
-          .post("https://guidr-project.herokuapp.com/users/login", userAuth)
-          .then(res => {
-            console.log(res.data.token)
-            console.log(res.data.id)
-            localStorage.setItem("token", res.data.token)
-            localStorage.setItem("id", res.data.id)
+            .post("https://guidr-project.herokuapp.com/users/login", {})
+            .then(res => {
+                console.log(res.data.token)
+                console.log(res.data.id)
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("id", res.data.id)
 
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
+    const {
+        handleReset,
+        isSubmitting,
+        handleChange,
+        dirty,
+    } = props;
 
     return (
         <section >
-
-            <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
+            <img className="img-align" src={logo} alt="Guidr Logo"></img>
             <br />
             <h1>Welcome to Guidr!</h1>
             <br />
-            <form onSubmit={handleSubmit} className="login-form">
+            <Form onSubmit={handleSubmit} className="login-form">
                 <label>
                     Username:
-                <input
+                <Field
                         type="text"
                         name="username"
+                        value={values.username}
                         placeholder="username"
-                        value={userAuth.username}
-                        onChange={handleChange}
                     />
+                     {touched.username && errors.username && <p color="danger">{errors.username}</p>}
                 </label>
                 <br />
                 <br />
                 <label>
                     Password:
-                   <input
-                         type="text"
-                         name="password"
-                         placeholder="Password"
-                         value={userAuth.password}
-                         onChange={handleChange}
+                   <Field
+                        type="password"
+                        name="password"
+                        value={values.password}
+                        placeholder="password"
                     />
+                     {touched.password && errors.password && <p color="danger">{errors.password}</p>}
                 </label>
-                <button color="success" tag={Link} to='/'>Submit</button>{' '}
+                <br />
+                <br />
+                <button color="success" tag={Link} to='/' onClick={handleReset}
+                    disabled={!dirty || isSubmitting}
+                >Submit</button>{' '}
 
-            </form>
+            </Form>
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
-            <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
+            <br />
+            <Button color="success" tag={Link} to='/signUp' onClick={handleReset} disabled={!dirty || isSubmitting} component={SignUp}>Sign Up</Button>{' '}
 
         </section>
     );
 }
+const EnchancedForm = withFormik({
+    mapPropsToValues: ({username, password}) => ({
+        username: username || "",
+        password: password || " ",
+    }),
+
+    validationSchema: Yup.object().shape({
+        username: Yup.string()
+            .max(20, 'Username must be shorter than 20 symbools')
+            .required('Username is required!'),
+
+        password: Yup.string()
+            .min(2, 'Invalid Password')
+            .max(10, 'Password must be shorter than 10 symbols')
+            .required('Password is required!'),
+    })
+
+})(MyInnerForm);
+
+const WelcomePage = connect()(EnchancedForm);
 
 export default WelcomePage;
