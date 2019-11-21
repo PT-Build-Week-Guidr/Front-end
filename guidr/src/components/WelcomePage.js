@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from 'reactstrap';
-import NavBar from './NavBar';
+
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
 import SignUp from "../API/newUserForm"
@@ -11,14 +11,14 @@ function WelcomePage() {
         username: "",
         password: "",
       });
-    
+
       const handleChange = event => {
         setUserAuth({
           ...userAuth,
           [event.target.name]: event.target.value
         });
       };
- 
+
 
       const handleSubmit = event => {
         event.preventDefault();
@@ -29,17 +29,17 @@ function WelcomePage() {
             console.log(res.data.id)
             localStorage.setItem("token", res.data.token)
             localStorage.setItem("id", res.data.id)
-    
+
           })
           .catch(err => {
             console.log(err);
           });
       };
-    
+
 
     return (
         <section >
-            
+
             <img className="img-align" src="./images/logo.png" alt="Guidr Logo"></img>
             <br />
             <h1>Welcome to Guidr!</h1>

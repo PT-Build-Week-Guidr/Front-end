@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { FetchTrips } from "../API/actions/fetching";
 
 import {Media} from 'reactstrap';
-import temp from '../images/icon.png';
+// import temp from '../images/icon.png';
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes

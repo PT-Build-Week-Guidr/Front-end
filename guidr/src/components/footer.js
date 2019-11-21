@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
@@ -30,24 +30,24 @@ const Footer = (props) =>{
                 </h6>
               </MDBCol>
               <MDBCol md="6" lg="7" className="text-center text-md-right">
-                <a class="fb-ic ml-0" href="http://facebook.com">
-                  <img src={fb} alt='facebook link' class='social-app' />
+                <a className="fb-ic ml-0" href="http://facebook.com">
+                  <img src={fb} alt='facebook link' className='social-app' />
                 </a>{' '}
-                <a href classe="tw-ic" href="http://twitter.com">
-                  <img src={tw} alt='twitter link' class='social-app' />
+                <a href className="tw-ic" href="http://twitter.com">
+                  <img src={tw} alt='twitter link' className='social-app' />
                 </a>{' '}
                 <a className="gplus-ic" href="http://pinterest.com">
-                  <img src={pin} alt='pinterest link' class='social-app' />
+                  <img src={pin} alt='pinterest link' className='social-app' />
                 </a>{' '}
                 <a className="ins-ic" href="http://instagram.com">
-                  <img src={inst} alt='instagram link' class='social-app' />
+                  <img src={inst} alt='instagram link' className='social-app' />
                 </a>{' '}
 
                 <a className="ins-ic" href="http://play.google.com">
-                  <img src={gapp} alt='play store link' class='social-app2' />
+                  <img src={gapp} alt='play store link' className='social-app2' />
                 </a>{' '}
                 <a className="ins-ic" href="http://apple.com">
-                  <img src={app} alt='apple store link' class='social-app2' />
+                  <img src={app} alt='apple store link' className='social-app2' />
                 </a>{' '}
               </MDBCol>
             </MDBRow>
@@ -59,7 +59,7 @@ const Footer = (props) =>{
 
               <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
               <p>
-                <Link to='/'><img src={logo} alt="guider logo" class="footer-logo" /></Link>
+                <Link to='/'><img src={logo} alt="guider logo" className="footer-logo" /></Link>
               </p>
             </MDBCol>
             <MDBCol md="2" lg="2" xl="2" className="mb-4 dark-grey-text">

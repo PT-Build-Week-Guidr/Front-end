@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import TripCard from "./addTrip";
 import { connect } from "react-redux";
 import { FetchTrips } from "../API/actions/fetching";
@@ -14,6 +14,7 @@ import {
   CardTitle,
   CardText
 } from "reactstrap";
+import {Link} from "react-router-dom";
 import DeleteTrips from "../API/actions/delete";
 import TripDetails from "../API/deleteTrips";
 
@@ -22,14 +23,14 @@ const UserCardMain = props => {
   // const [curProfile, setCurProfile] = useState([]);
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
-  let hasRun = 0;
+
   let curProfile = tripList;
 
   useEffect(()=> {
-    let curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
+    curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
     // setCurProfile(tripList.filter(it => `${it.id}`===`${props.match.params.id}`));
     console.log("here!", tripList.filter(it => `${it.id}`===`${props.match.params.id}`))
-    hasRun = 1;
+
   }, [props.match.params.id])
 
   // console.log("props match id", props.match.params.id);
@@ -45,14 +46,6 @@ const UserCardMain = props => {
   //
   // }, [props.match.params.id]);
 
-
-
-
-  console.log("usercardmain", curProfile[0], hasRun);
-  if (hasRun === 1){
-    console.log("usercardmain", curProfile[0]);
-  }
-
   useEffect(() => {
     props.FetchTrips();
   }, []);
@@ -66,7 +59,7 @@ const UserCardMain = props => {
   }
 
   // console.log("usercardmain2", props.trips);
-  if(curProfile[0]!=undefined){
+  if(curProfile[0] !== undefined){
       return (
         <div>
           <Container>
@@ -78,37 +71,26 @@ const UserCardMain = props => {
             <Row>
               <Col>
                 <h2>{curProfile[0].title}</h2>
-                <p>"{curProfile[0].tagline}"</p>
+                <h3>{curProfile[0].type}</h3>
+                <h4>{curProfile[0].description}</h4>
               </Col>
             </Row>
             <Row>
               <Col>
-                <p>Specialty: {curProfile[0].guideSpecialty}</p>
-                <p>Age: {curProfile[0].age}</p>
-                <p>Years Experience: {curProfile[0].yearsExperience}</p>
+                <p>Start Date: {curProfile[0].start_date}</p>
+                <p>End Date: {curProfile[0].end_date}</p>
+                <p>Set to Private: {`${curProfile[0].private}`}</p>
               </Col>
             </Row>
             <Row>
               <Col>
-                <h2>My Trips:</h2>
+
               </Col>
           </Row>
           <Row>
             <Col>
-
-                <TripDetails2
-                  key={curProfile[0].id}
-                  trip={curProfile[0].id}
-                  title={curProfile[0].title}
-                  description={curProfile[0].description}
-                  type={curProfile[0].type}
-                  start_date={curProfile[0].start_date}
-                  end_date={curProfile[0].end_date}
-                  duration_hours={curProfile[0].duration_hours}
-                  duration_days={curProfile[0].duration_days}
-                />
-
-
+              <Button tag={Link} to="/trips/edit/">Edit</Button>
+              <br />
             </Col>
           </Row>
         </Container>
@@ -131,51 +113,51 @@ const mapStateToProps = state => {
   };
 };
 
-function TripDetails2(props){
-  // const {title, description, duration_day, duration_hours, end_date, type} = trips;
-  // const ref = `/character/${trip.id}`;
-
-  // function characterSelect(){
-  //   // console.log(character.id);
-  // }
-
-  return (
-
-      <div className="trip-card">
-      <Card>
-        <CardHeader tag="h3">{props.title}</CardHeader>
-        <CardBody>
-          <CardTitle>{props.title}</CardTitle>
-          <CardText>
-
-            <br />
-              {props.description}
-            <br />
-              Visited on: {props.end_date}
-
-
-            <br />
-              Type of Trip: {props.type}
-
-
-          </CardText>
-
-        </CardBody>
-        <CardFooter className="text-muted">
-          <Button>View Details</Button>
-          <br />
-          <br />
-          <Button>Edit</Button>
-        </CardFooter>
-      </Card>
-
-          <br />
-          <br />
-      </div>
-
-
-  );
-}
+// function TripDetails2(props){
+//   // const {title, description, duration_day, duration_hours, end_date, type} = trips;
+//   // const ref = `/character/${trip.id}`;
+//
+//   // function characterSelect(){
+//   //   // console.log(character.id);
+//   // }
+//
+//   return (
+//
+//       <div className="trip-card">
+//       <Card>
+//         <CardHeader tag="h3">{props.title}</CardHeader>
+//         <CardBody>
+//           <CardTitle>{props.title}</CardTitle>
+//           <CardText>
+//
+//             <br />
+//               {props.description}
+//             <br />
+//               Visited on: {props.end_date}
+//
+//
+//             <br />
+//               Type of Trip: {props.type}
+//
+//
+//           </CardText>
+//
+//         </CardBody>
+//         <CardFooter className="text-muted">
+//           <Button>View Details</Button>
+//           <br />
+//           <br />
+//           <Button>Edit</Button>
+//         </CardFooter>
+//       </Card>
+//
+//           <br />
+//           <br />
+//       </div>
+//
+//
+//   );
+// }
 
 const mapDispatchToProps = { FetchTrips, DeleteTrips };
 
