@@ -4,6 +4,7 @@ import DeleteTrips from "../API/actions/delete";
 import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText} from 'reactstrap';
 import UpdateTrips from "./updateTrips";
+import {Link} from "react-router-dom";
 
 function TripDetails(props){
  
@@ -23,10 +24,10 @@ function TripDetails(props){
               <p>Type of Trip: {props.type}</p>
   
               <Button onclick={() => {DeleteTrips(props.trip)}} >Delete</Button>
-              console.log("button was clicked")
+              {/* console.log("button was clicked") */}
             <br />
             <br />
-            <Button to="/trips/edit">Edit</Button>
+            <Button tag={Link} to="/trips/edit">Edit</Button>
             </CardText>
   </CardBody>
         </Card>

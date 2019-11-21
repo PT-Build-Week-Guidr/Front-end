@@ -27,6 +27,9 @@ const NavBar = () =>  {
                         <NavItem className="guidr-green2">
                             <NavLink href="/profile/">Profile</NavLink>
                         </NavItem>
+                        <NavItem className="guidr-green2">
+                            <NavLink href="">Trips</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

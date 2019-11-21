@@ -7,7 +7,7 @@ import ProfilePage from "./components/profile.js";
 import Footer from "./components/footer.js";
 import Login from "./API/login";
 import NavBar from "./components/NavBar.js";
-
+import UpdateTrips from "./API/updateTrips";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import TravelPage from "./components/travelpage.js";
@@ -78,7 +78,21 @@ function App() {
             </div>
           )}
         />
-
+   <Route
+          exact
+          path="/trips/edit"
+          render={props => (
+            <div>
+              <NavBar />
+              <br />
+              <br />
+              <UpdateTrips {...props} />
+              <br />
+              <br />
+              <Footer />
+            </div>
+          )}
+        />
         <Route
           exact
           path="/trips"
