@@ -6,6 +6,7 @@ import api from "../API/axiosHeader";
 import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
+import SignUp from "../API/newUserForm"
 
 function WelcomePage() {
 
@@ -59,7 +60,7 @@ function WelcomePage() {
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
-            <Button color="success" tag={Link} to='/'>Sign Up</Button>{' '}
+            <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
 
         </section>
     );
