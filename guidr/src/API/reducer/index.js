@@ -1,10 +1,10 @@
 import {combineReducers} from "redux"
 import GetPublicTrips from "./getPublicTrips";
-// import PostedTrips from "./postTrips";
+import DeleteTrips from "../actions/delete";
 
 const reducer = combineReducers({
   GetPublicTrips,
-  // PostedTrips,
+  DeleteTrips
 })
 
 export default reducer;
