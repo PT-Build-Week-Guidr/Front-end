@@ -59,6 +59,9 @@ section > .homePageButton {
   padding: 20px;
 }
 
+.travel-name{
+  width: 100px;
+}
 .mr-2-guidr{
   background-image: url("./images/icon.png");
 }

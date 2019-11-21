@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-import {Link} from 'react-router-dom';
+import React from "react";
 
 import UserCardMain from './usercard.js';
 
@@ -15,8 +13,8 @@ const ProfilePage = (props) =>{
 
     <div>
       <UserCardMain
+        {...props}
 
-        
       />
     </div>
 
