@@ -4,16 +4,16 @@ import { connect } from "react-redux";
 import { FetchTrips } from "../API/actions/fetching";
 
 import {Media} from 'reactstrap';
-import temp from '../images/icon.png';
+// import temp from '../images/icon.png';
 
-
+// import { Link } from "react-router-dom";
 
 
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
 
 
-  console.log('it works.. sorta!');
+
 
   useEffect(() => {
     props.FetchTrips();
@@ -23,8 +23,8 @@ const TravelCardMain = (props) => {
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
-
-  console.log("travelcard", props.trips);
+  console.log('TravelCardMain', tripList[0]);
+  console.log("travelcard", props);
 
 
 
@@ -41,6 +41,7 @@ const TravelCardMain = (props) => {
               key={trip.id}
               trip={trip.id}
               title={trip.title}
+              full_name={trip.full_name}
               description={trip.description}
               type={trip.type}
               start_date={trip.start_date}
@@ -71,19 +72,24 @@ const mapStateToProps = state => {
 
 
 function TripDetails(props){
-  // const {title, description, isPrivate, isProfessional, images, duration, distance, date, tripType} = trips;
-  // const ref = `/character/${trip.id}`;
+  const ref = `/users/${props.trip}/trips/`;
 
   // function characterSelect(){
   //   // console.log(character.id);
   // }
 
   return (
-    <Media className="travel-list" href="#">
-        <Media left >
-            <Media object data-src={temp} alt="Generic placeholder image" />
+
+
+    <Media className="travel-list" href={ref}>
+
+        <Media left className="travel-name">
+
+            <Media> Guidr: {props.full_name} </Media>
+
         </Media>
         <Media body>
+
           <Media heading>
             {props.title}
           </Media>

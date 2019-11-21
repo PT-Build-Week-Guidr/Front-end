@@ -12,11 +12,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './index.css';
 // import * as serviceWorker from './serviceWorker';
 
-
-
-
-
-
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 console.log(store.getState())
 

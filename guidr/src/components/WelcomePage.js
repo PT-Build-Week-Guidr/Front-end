@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from 'reactstrap';
-import NavBar from './NavBar';
+
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
 import { withFormik, Form, Field } from "formik";
@@ -51,7 +51,7 @@ const MyInnerForm = props => {
                         value={values.username}
                         placeholder="username"
                     />
-                     {touched.username && errors.username && <p>{errors.username}</p>}
+                     {touched.username && errors.username && <p color="danger">{errors.username}</p>}
                 </label>
                 <br />
                 <br />
@@ -63,7 +63,7 @@ const MyInnerForm = props => {
                         value={values.password}
                         placeholder="password"
                     />
-                     {touched.password && errors.password && <p>{errors.password}</p>}
+                     {touched.password && errors.password && <p color="danger">{errors.password}</p>}
                 </label>
                 <br />
                 <br />
