@@ -64,6 +64,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { FetchTrips, DeleteTrips };
+const mapDispatchToProps = { FetchTrips };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCardMain);

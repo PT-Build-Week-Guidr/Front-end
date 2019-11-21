@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import DeleteTrips from "../API/actions/delete";
 import {Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText} from 'reactstrap';
+import UpdateTrips from "./updateTrips";
 
 function TripDetails(props){
  
@@ -21,11 +22,11 @@ function TripDetails(props){
   
               <p>Type of Trip: {props.type}</p>
   
-              <Button onclick={console.log("button was clicked")} >Delete</Button>
-              {/* () => {DeleteTrips(props.trip)} */}
+              <Button onclick={() => {DeleteTrips(props.trip)}} >Delete</Button>
+              console.log("button was clicked")
             <br />
             <br />
-            <Button>Edit</Button>
+            <Button to="/trips/edit">Edit</Button>
             </CardText>
   </CardBody>
         </Card>

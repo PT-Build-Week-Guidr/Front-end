@@ -9,7 +9,7 @@ import{
     error: ""
   };
 
-  const DeleteTrips = (state = initialState, action) => {
+  const DeleteTripsState = (state = initialState, action) => {
     switch (action.type) {
   case START_DELETING:
     return {
@@ -21,7 +21,6 @@ import{
     return {
       ...state,
       isFetching: false,
-      deleted: action.payload,
       error: ""
     };
   case DELETE_FAILURE:
@@ -33,4 +32,4 @@ import{
   default:
     return state;
 }}
-export default DeleteTrips;
+export default DeleteTripsState;

@@ -9,7 +9,7 @@ export const DeleteTrips = (idParam) => dispatch => {
 
   dispatch({ type: START_DELETING });
   api()
-    .delete(`https://guidr-project.herokuapp.com/trips/${idParam}`)
+    .delete(`https://guidr-project.herokuapp.com/trips/${idParam.trip}`)
     .then(res => {
       console.log(res.data);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
