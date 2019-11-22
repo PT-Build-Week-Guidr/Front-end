@@ -14,14 +14,17 @@ const UserCardMain = props => {
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
 
-  let curProfile = tripList;
-
-  useEffect(()=> {
-    curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
-    // setCurProfile(tripList.filter(it => `${it.id}`===`${props.match.params.id}`));
-    console.log("here!", tripList.filter(it => `${it.id}`===`${props.match.params.id}`))
-
-  }, [props.match.params.id])
+  let curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
+  let id = props.match.params.id
+  console.log("id " ,id);
+  console.log("triplist ", tripList)
+  console.log("props ", props)
+  // useEffect(()=> {
+  //   curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
+  //   // setCurProfile(tripList.filter(it => `${it.id}`===`${props.match.params.id}`));
+  //   console.log("here!", tripList.filter(it => `${it.id}`===`${props.match.params.id}`))
+  //
+  // }, [id])
 
   // console.log("props match id", props.match.params.id);
 

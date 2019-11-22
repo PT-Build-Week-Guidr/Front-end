@@ -16,6 +16,7 @@ import TravelPage from './components/travelpage.js';
 //import UserCardMain from './components/usercard.js';
 import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
+import TripPage from './components/trippage.js'
 
 function App() {
   return (
@@ -69,13 +70,9 @@ function App() {
               />
             }
             />
-            <Route exact path="/users/:id/trips" render={props =>
-              <ProfilePage
-                {...props}
+            <Route exact path="/users/:id/trips" component={TripPage}  />
 
-              />
-            }
-            />
+
 
           </PrivateRoute>
         </Switch>
