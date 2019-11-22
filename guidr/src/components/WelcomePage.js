@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from 'reactstrap';
-
 import { Link } from 'react-router-dom';
 import api from "../API/axiosHeader";
 import { withFormik, Form, Field } from "formik";
@@ -28,13 +27,6 @@ const MyInnerForm = props => {
                 console.log(err);
             });
     };
-
-    const {
-        handleReset,
-        isSubmitting,
-        handleChange,
-        dirty,
-    } = props;
 
     return (
         <section >
@@ -67,16 +59,14 @@ const MyInnerForm = props => {
                 </label>
                 <br />
                 <br />
-                <button color="success" tag={Link} to='/' onClick={handleReset}
-                    disabled={!dirty || isSubmitting}
-                >Submit</button>{' '}
+                <button className="guidr-green-button" tag={Link} to='/'>Submit</button>{' '}
 
             </Form>
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
+            <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
             <br />
-            <Button color="success" tag={Link} to='/signUp' onClick={handleReset} disabled={!dirty || isSubmitting} component={SignUp}>Sign Up</Button>{' '}
 
         </section>
     );
@@ -84,7 +74,7 @@ const MyInnerForm = props => {
 const EnchancedForm = withFormik({
     mapPropsToValues: ({username, password}) => ({
         username: username || "",
-        password: password || " ",
+        password: password || "",
     }),
 
     validationSchema: Yup.object().shape({
