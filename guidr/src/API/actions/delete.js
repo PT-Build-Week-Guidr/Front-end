@@ -5,11 +5,11 @@ export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
 
 export const DeleteTrips = (idParam) => dispatch => {
-  // const id = localStorage.getItem("id");
+  const id = localStorage.getItem("id");
 
   dispatch({ type: START_DELETING });
   api()
-    .delete(`https://guidr-project.herokuapp.com/trips/${idParam.trip}`)
+    .delete(`https://guidr-project.herokuapp.com/trips/${id}`)
     .then(res => {
       console.log(res.data);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });

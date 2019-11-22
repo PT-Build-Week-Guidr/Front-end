@@ -11,12 +11,13 @@ import { connect } from 'react-redux';
 
 const MyInnerForm = props => {
    const {values, touched, errors} = props;
-   console.log(props, values, touched, errors);
+//    console.log(props, values, touched, errors);
 
     const handleSubmit = event => {
         event.preventDefault();
+        let auth = {username: values.username, password: values.password}
         api()
-            .post("https://guidr-project.herokuapp.com/users/login", {})
+            .post("https://guidr-project.herokuapp.com/users/login", auth)
             .then(res => {
                 console.log(res.data.token)
                 console.log(res.data.id)
@@ -30,7 +31,6 @@ const MyInnerForm = props => {
     };
 
     const {
-        handleReset,
         isSubmitting,
         handleChange,
         dirty,
@@ -67,7 +67,7 @@ const MyInnerForm = props => {
                 </label>
                 <br />
                 <br />
-                <button color="success" tag={Link} to='/' onClick={handleReset}
+                <button type="submit" color="success" tag={Link} to='/' 
                     disabled={!dirty || isSubmitting}
                 >Submit</button>{' '}
 
@@ -76,7 +76,7 @@ const MyInnerForm = props => {
             <br />
             <p>Don't have an account? Click here to create one:</p>
             <br />
-            <Button color="success" tag={Link} to='/signUp' onClick={handleReset} disabled={!dirty || isSubmitting} component={SignUp}>Sign Up</Button>{' '}
+            <Button color="success" tag={Link} to='/signUp'  disabled={!dirty || isSubmitting}>Sign Up</Button>{' '}
 
         </section>
     );
@@ -84,7 +84,7 @@ const MyInnerForm = props => {
 const EnchancedForm = withFormik({
     mapPropsToValues: ({username, password}) => ({
         username: username || "",
-        password: password || " ",
+        password: password || "",
     }),
 
     validationSchema: Yup.object().shape({

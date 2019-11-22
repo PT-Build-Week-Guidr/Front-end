@@ -27,7 +27,7 @@ function TripDetails(props){
               {/* console.log("button was clicked") */}
             <br />
             <br />
-            <Button tag={Link} to="/trips/edit">Edit</Button>
+            <Button to="/edit/trips" to="/trips/edit">Edit</Button>
             </CardText>
   </CardBody>
         </Card>

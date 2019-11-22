@@ -96,7 +96,7 @@ const UpdateTrips = props => {
           name="duration_days"
           placeholder="duration_days"
         />
-        <button type="submit">Update Trip</button>
+        <button to="users/:id/edit/trips" type="submit">Update Trip</button>
       </form>
     </div>
   );

@@ -90,6 +90,7 @@ const UserCardMain = props => {
           <Row>
             <Col>
               <Button tag={Link} to="/trips/edit/">Edit</Button>
+              <Button tag={Link} to="/trips/delete/">Delete</Button>
               <br />
             </Col>
           </Row>

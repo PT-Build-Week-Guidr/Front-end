@@ -7,14 +7,14 @@ import './App.css';
 //import APITest from './components/apiTest.js';
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-
+import UpdateTrips from "./API/updateTrips";
 import NavBar from './components/NavBar.js';
 
 import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 //import UserCardMain from './components/usercard.js';
-
+import Profile from "./API/profile";
 import Login from './API/login.js';
 
 function App() {
@@ -36,11 +36,19 @@ function App() {
           />
           <Route path= "/profile/" render={props=>
             <ProfilePage
+            
+              {...props}
+            />
+          }
+          />
+           <Route exact path="/addTrip" render={props =>
+            <Profile
               {...props}
 
             />
           }
           />
+
           <Route exact path="/" render={props =>
             <WelcomePage
               {...props}
@@ -65,6 +73,12 @@ function App() {
             />
             <Route exact path="/users/:id/trips" render={props =>
               <ProfilePage
+                {...props}
+              />
+            }
+            />
+                <Route exact path="/users/:id/edit/trips" render={props =>
+              <UpdateTrips
                 {...props}
 
               />
