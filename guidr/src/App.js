@@ -14,7 +14,7 @@ import WelcomePage from './components/WelcomePage';
 import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 //import UserCardMain from './components/usercard.js';
-
+import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
 
 function App() {
@@ -48,6 +48,12 @@ function App() {
             />
           }
           />
+          <Route exact path="/signUp" render={props =>
+            <SignUp
+              {...props}
+            />
+          }
+          />
           <PrivateRoute>
             <Route exact path="/home" render={props =>
               <HomePage
@@ -70,6 +76,7 @@ function App() {
               />
             }
             />
+
           </PrivateRoute>
         </Switch>
         <br />
