@@ -2,18 +2,8 @@ import React, { useEffect } from "react";
 // import TripCard from "./addTrip";
 import { connect } from "react-redux";
 import { FetchTrips } from "../API/actions/fetching";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  CardHeader,
-  CardFooter,
-  CardBody,
-  CardTitle,
-  CardText
-} from "reactstrap";
+import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
+  CardBody, CardTitle, CardText } from "reactstrap";
 import {Link} from "react-router-dom";
 import DeleteTrips from "../API/actions/delete";
 import TripDetails from "../API/deleteTrips";

@@ -6,16 +6,16 @@ import api from "../API/axiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
-import SignUp from "../API/newUserForm"
+
 import { connect } from 'react-redux';
 
 const MyInnerForm = props => {
    const {values, touched, errors} = props;
-//    console.log(props, values, touched, errors);
+   // console.log(props, values, touched, errors);
 
     const handleSubmit = event => {
         event.preventDefault();
-        let auth = {username: values.username, password: values.password}
+        let auth = {username:values.username, password:values.password};
         api()
             .post("https://guidr-project.herokuapp.com/users/login", auth)
             .then(res => {
@@ -44,39 +44,37 @@ const MyInnerForm = props => {
             <br />
             <Form onSubmit={handleSubmit} className="login-form">
                 <label>
-                    Username:
+                    Username:{' '}
                 <Field
                         type="text"
                         name="username"
                         value={values.username}
-                        placeholder="username"
+                        placeholder=" username"
                     />
                      {touched.username && errors.username && <p color="danger">{errors.username}</p>}
                 </label>
                 <br />
                 <br />
                 <label>
-                    Password:
+                    Password:{' '}
                    <Field
                         type="password"
                         name="password"
                         value={values.password}
-                        placeholder="password"
+                        placeholder=" password"
                     />
                      {touched.password && errors.password && <p color="danger">{errors.password}</p>}
                 </label>
                 <br />
                 <br />
-                <button type="submit" color="success" tag={Link} to='/' 
-                    disabled={!dirty || isSubmitting}
-                >Submit</button>{' '}
+                <button color="success" type="submit" tag={Link} to='/'>Submit</button>{' '}
 
             </Form>
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
             <br />
-            <Button color="success" tag={Link} to='/signUp'  disabled={!dirty || isSubmitting}>Sign Up</Button>{' '}
+            <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '}
 
         </section>
     );
