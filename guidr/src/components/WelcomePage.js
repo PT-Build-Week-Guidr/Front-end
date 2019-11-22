@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 
 const MyInnerForm = props => {
    const {values, touched, errors} = props;
-   // console.log(props, values, touched, errors);
 
     const handleSubmit = event => {
         event.preventDefault();
