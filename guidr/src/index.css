@@ -50,6 +50,18 @@ section > .homePageButton {
 
 }
 
+.guidr-green-button {
+    background-color: #00A693;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.guidr-green-button a:hover {
+    color: #00A693;
+    background-color: white;
+}
+
 .travel-list{
   margin-bottom: 20px;
   width: 70%;
