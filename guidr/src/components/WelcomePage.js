@@ -28,11 +28,11 @@ const MyInnerForm = props => {
             });
     };
 
+
     return (
         <section >
             <img className="img-align" src={logo} alt="Guidr Logo"></img>
             <br />
-            <h1>Welcome to Guidr!</h1>
             <br />
             <Form onSubmit={handleSubmit} className="login-form">
                 <label>
@@ -63,9 +63,7 @@ const MyInnerForm = props => {
 
             </Form>
             <br />
-            <br />
             <p>Don't have an account? Click here to create one:</p>
-            <br />
             <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '}
 
         </section>

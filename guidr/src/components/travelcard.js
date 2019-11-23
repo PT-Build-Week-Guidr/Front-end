@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
+<<<<<<< HEAD
 import { FetchTrips } from "../API/actions/fetching";
 import {Link} from 'react-router-dom';
 
 import {Media, Button} from 'reactstrap';
+=======
+import  FetchTrips  from "../API/actions/fetching";
+
+import { Media } from "reactstrap";
+>>>>>>> a578afb8ae6a8ef422c09847b48fb56c0e06fd23
 // import temp from '../images/icon.png';
 
 // import { Link } from "react-router-dom";
@@ -12,9 +18,6 @@ import {Media, Button} from 'reactstrap';
 
 const TravelCardMain = (props) => {
   //define the current profile as contained in this component fill it with info for debug purposes
-
-
-
 
   useEffect(() => {
     props.FetchTrips();
@@ -24,13 +27,8 @@ const TravelCardMain = (props) => {
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
-  console.log('TravelCardMain', tripList[0]);
+  console.log("TravelCardMain", tripList[0]);
   console.log("travelcard", props);
-
-
-
-
-
 
   return (
     <div>
@@ -60,7 +58,6 @@ const TravelCardMain = (props) => {
 
     </div>
   );
-
 };
 
 const mapStateToProps = state => {
@@ -71,10 +68,7 @@ const mapStateToProps = state => {
   };
 };
 
-
-
-
-function TripDetails(props){
+function TripDetails(props) {
   const ref = `/users/${props.trip}/trips/`;
 
   // function characterSelect(){
@@ -82,32 +76,22 @@ function TripDetails(props){
   // }
 
   return (
-
-
     <Media className="travel-list" href={ref}>
+      <Media left className="travel-name">
+        <Media> Guidr: {props.full_name} </Media>
+      </Media>
+      <Media body>
+        <Media heading>{props.title}</Media>
+        {props.type}
+        <p>{props.description}</p>
 
-        <Media left className="travel-name">
-
-            <Media> Guidr: {props.full_name} </Media>
-
-        </Media>
-        <Media body>
-
-          <Media heading>
-            {props.title}
-          </Media>
-          {props.type}
-          <p>{props.description}</p>
-
-            <span>{props.start_date} - {props.end_date}</span>
-        </Media>
-
+        <span>
+          {props.start_date} - {props.end_date}
+        </span>
+      </Media>
     </Media>
-
   );
 }
-
-
 
 const mapDispatchToProps = { FetchTrips };
 

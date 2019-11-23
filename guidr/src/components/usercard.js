@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 // import TripCard from "./addTrip";
 import { connect } from "react-redux";
-import { FetchTrips } from "../API/actions/fetching";
 import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
   CardBody, CardTitle, CardText } from "reactstrap";
 import {Link} from "react-router-dom";
-import DeleteTrips from "../API/actions/delete";
-import TripDetails from "../API/deleteTrips";
-
+import FetchTrips from "../API/actions/fetching";
+import api from "../API/axiosHeader";
 const UserCardMain = props => {
 
   // const [curProfile, setCurProfile] = useState([]);
@@ -36,7 +34,21 @@ const UserCardMain = props => {
     props.FetchTrips();
   }, []);
 
-
+  const DeleteTrips = () => {
+    // const id = localStorage.getItem("id")
+    const id = props.match.params.id
+    console.log(id)
+    api()
+      .delete(`https://guidr-project.herokuapp.com/trips/${id}`)
+      .then(res => {
+        console.log(res.data)
+        console.log("deleted")
+        FetchTrips();
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  };
 
   // console.log("usercardmain props match:", props);
 
@@ -75,7 +87,8 @@ const UserCardMain = props => {
           </Row>
           <Row>
             <Col>
-              <Button tag={Link} to="edit/">Edit</Button>
+              <Button tag={Link} to="/trips/edit/">Edit</Button>
+              <Button onClick={DeleteTrips}>Delete</Button>
               <br />
             </Col>
           </Row>
@@ -105,52 +118,6 @@ const mapStateToProps = state => {
   };
 };
 
-// function TripDetails2(props){
-//   // const {title, description, duration_day, duration_hours, end_date, type} = trips;
-//   // const ref = `/character/${trip.id}`;
-//
-//   // function characterSelect(){
-//   //   // console.log(character.id);
-//   // }
-//
-//   return (
-//
-//       <div className="trip-card">
-//       <Card>
-//         <CardHeader tag="h3">{props.title}</CardHeader>
-//         <CardBody>
-//           <CardTitle>{props.title}</CardTitle>
-//           <CardText>
-//
-//             <br />
-//               {props.description}
-//             <br />
-//               Visited on: {props.end_date}
-//
-//
-//             <br />
-//               Type of Trip: {props.type}
-//
-//
-//           </CardText>
-//
-//         </CardBody>
-//         <CardFooter className="text-muted">
-//           <Button>View Details</Button>
-//           <br />
-//           <br />
-//           <Button>Edit</Button>
-//         </CardFooter>
-//       </Card>
-//
-//           <br />
-//           <br />
-//       </div>
-//
-//
-//   );
-// }
-
-const mapDispatchToProps = { FetchTrips, DeleteTrips };
+const mapDispatchToProps = { FetchTrips };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCardMain);
