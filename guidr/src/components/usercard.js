@@ -12,14 +12,10 @@ const UserCardMain = props => {
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
 
-  let curProfile = tripList;
+  let curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
 
-  useEffect(()=> {
-    curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
-    // setCurProfile(tripList.filter(it => `${it.id}`===`${props.match.params.id}`));
-    console.log("here!", tripList.filter(it => `${it.id}`===`${props.match.params.id}`))
 
-  }, [props.match.params.id])
+  let id = props.match.params.id;
 
   // console.log("props match id", props.match.params.id);
 
@@ -94,6 +90,12 @@ const UserCardMain = props => {
               <Button tag={Link} to="/trips/edit/">Edit</Button>
               <Button onClick={DeleteTrips}>Delete</Button>
               <br />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <br />
+              <Button tag={Link} to="/trips/">Back</Button>
             </Col>
           </Row>
         </Container>
