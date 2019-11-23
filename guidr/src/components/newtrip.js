@@ -9,10 +9,6 @@ import SignUp from "../API/newUserForm"
 import { connect } from 'react-redux';
 import { FetchTrips } from "../API/actions/fetching";
 
-import DatePicker from "react-datepicker";
-
-
-
 const MyTripNew = props => {
 
    const {values, touched, errors} = props;
