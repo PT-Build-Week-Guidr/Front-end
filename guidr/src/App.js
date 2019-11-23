@@ -5,7 +5,7 @@ import React from 'react';
 import './App.css';
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-import UpdateTrips from "./API/updateTrips";
+// import UpdateTrips from "./API/updateTrips";
 import NavBar from './components/NavBar.js';
 
 import WelcomePage from './components/WelcomePage';
@@ -82,13 +82,13 @@ function App() {
               />
             }
             />
-                <Route exact path="/users/:id/edit/trips" render={props =>
+            {/*<Route exact path="/users/:id/edit/trips" render={props =>
               <UpdateTrips
                 {...props}
 
               />
             }
-            />
+            />*/}
             <Route exact path="/users/:id/trips/edit" render={props =>
               <TripEdit
                 {...props}

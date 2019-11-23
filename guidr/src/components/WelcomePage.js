@@ -58,7 +58,7 @@ const MyInnerForm = props => {
                 </label>
                 <br />
                 <br />
-                <button className="guidr-green-button" tag={Link} to='/'>Submit</button>{' '}
+                <Button className="guidr-green-button" tag={Link} to='/home'>Submit</Button>{' '}
 
             </Form>
             <br />

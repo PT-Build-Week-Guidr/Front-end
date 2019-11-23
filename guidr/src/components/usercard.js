@@ -87,7 +87,7 @@ const UserCardMain = props => {
           </Row>
           <Row>
             <Col>
-              <Button tag={Link} to="/trips/edit/">Edit</Button>
+              <Button tag={Link} to="edit/">Edit</Button>
               <Button onClick={DeleteTrips}>Delete</Button>
               <br />
             </Col>
