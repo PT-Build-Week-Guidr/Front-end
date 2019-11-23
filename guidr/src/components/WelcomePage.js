@@ -28,7 +28,6 @@ const MyInnerForm = props => {
             });
     };
 
-
     return (
         <section >
             <img className="img-align" src={logo} alt="Guidr Logo"></img>
@@ -41,7 +40,7 @@ const MyInnerForm = props => {
                         type="text"
                         name="username"
                         value={values.username}
-                        placeholder=" username"
+                        placeholder="username"
                     />
                      {touched.username && errors.username && <p color="danger">{errors.username}</p>}
                 </label>
@@ -53,7 +52,7 @@ const MyInnerForm = props => {
                         type="password"
                         name="password"
                         value={values.password}
-                        placeholder=" password"
+                        placeholder="password"
                     />
                      {touched.password && errors.password && <p color="danger">{errors.password}</p>}
                 </label>

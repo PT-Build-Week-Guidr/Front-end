@@ -1,5 +1,5 @@
 import React from "react";
-
+import Profile from "../API/profile";
 import UserCardMain from './usercard.js';
 
 
@@ -16,6 +16,7 @@ const ProfilePage = (props) =>{
         {...props}
 
       />
+      <Profile />
     </div>
 
   );

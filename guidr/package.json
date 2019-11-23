@@ -9,6 +9,7 @@
     "formik": "^2.0.4",
     "install": "^0.13.0",
     "mdbreact": "^4.22.1",
+    "now": "^16.6.0",
     "npm": "^6.13.0",
     "react": "^16.11.0",
     "react-datepicker": "^2.10.1",
