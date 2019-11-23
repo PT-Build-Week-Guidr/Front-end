@@ -30,16 +30,16 @@ const Footer = (props) =>{
                 </h6>
               </MDBCol>
               <MDBCol md="6" lg="7" className="text-center text-md-right">
-                <a className="fb-ic ml-0" href="https://www.facebook.com/LambdaSchoolOnline/">
+                <a className="fb-ic ml-0" href="http://facebook.com">
                   <img src={fb} alt='facebook link' className='social-app' />
                 </a>{' '}
-                <a href className="tw-ic" href="https://twitter.com/lambdaschool">
+                <a href className="tw-ic" href="http://twitter.com">
                   <img src={tw} alt='twitter link' className='social-app' />
                 </a>{' '}
                 <a className="gplus-ic" href="http://pinterest.com">
                   <img src={pin} alt='pinterest link' className='social-app' />
                 </a>{' '}
-                <a className="ins-ic" href="https://instagram.com/lambdaschool">
+                <a className="ins-ic" href="http://instagram.com">
                   <img src={inst} alt='instagram link' className='social-app' />
                 </a>{' '}
 
