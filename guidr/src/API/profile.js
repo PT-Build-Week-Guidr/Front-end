@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "./axiosHeader";
+import Api from "./AxiosHeader";
 
 const Profile = props => {
   const [newTrip, setNewTrip] = useState({
@@ -27,14 +27,14 @@ const Profile = props => {
   const handleSubmit = event => {
     event.preventDefault();
     const id = localStorage.getItem("id");
-    api()
+    Api()
       .post(`https://guidr-project.herokuapp.com/users/${id}/trips`, newTrip)
       .then(res => {
-        console.log(res.data);
+        console.log(res.data)
       })
       .catch(err => {
-        console.log(err.response);
-      });
+        console.log(err.response)
+      })
   };
 
   return (

@@ -5,7 +5,6 @@ import React from 'react';
 import './App.css';
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-import UpdateTrips from "./API/updateTrips";
 import NavBar from './components/NavBar.js';
 
 import WelcomePage from './components/WelcomePage';
@@ -13,8 +12,7 @@ import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
-import MyTripEdit from './components/tripedit.js';
-import MyTripNew from './components/newtrip.js';
+import MyEditTrip from './components/tripedit.js';
 
 function App() {
   return (
@@ -40,13 +38,7 @@ function App() {
             />
           }
           />
-           <Route exact path="/addTrip" render={props =>
-            <Profile
-              {...props}
-
-            />
-          }
-          />
+        
 
           <Route exact path="/" render={props =>
             <WelcomePage
@@ -76,33 +68,40 @@ function App() {
               />
             }
             />
+               <Route exact path="/trips/new" render={props =>
+            <Profile
+              {...props}
+
+            />
+          }
+          />
             <Route exact path="/users/:id/trips" render={props =>
               <ProfilePage
                 {...props}
               />
             }
             />
-            <Route exact path="/trips/edit" render={props =>
+            {/* <Route exact path="/trips/edit" render={props =>
               <UpdateTrips
                 {...props}
 
               />
             }
-            />
-            {/* <Route exact path="/trips/edit" render={props =>
-              <MyTripEdit
+            /> */}
+            <Route exact path="/trips/edit" render={props =>
+              <MyEditTrip
                 {...props}
 
               />
             }
-            /> */}
-            <Route exact path="/trips/new" render={props =>
+            />
+            {/* <Route exact path="/trips/new" render={props =>
               <MyTripNew
                 {...props}
 
                 />
               }
-              />
+              /> */}
           </PrivateRoute>
         </Switch>
         <br />

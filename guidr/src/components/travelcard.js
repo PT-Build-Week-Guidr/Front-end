@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Profiler } from "react";
 
 import { connect } from "react-redux";
 import FetchTrips  from "../API/actions/fetching";
@@ -47,7 +47,7 @@ const TravelCardMain = (props) => {
         })}
         <br />
         <br />
-        <Button tag={Link} onClick={MyTripNew} to='/trips/new'> Add Trip </Button>
+        <Button tag={Link} to='/trips/new'> Add Trip </Button>
 
 
     </div>

@@ -5,7 +5,7 @@ import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
   CardBody, CardTitle, CardText } from "reactstrap";
 import {Link} from "react-router-dom";
 import FetchTrips from "../API/actions/fetching";
-import api from "../API/axiosHeader";
+import api from "../API/AxiosHeader";
 import TripEdit from "./tripedit";
 
 

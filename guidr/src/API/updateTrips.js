@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "./axiosHeader";
+import api from "./AxiosHeader";
 
 const UpdateTrips = props => {
   const [updateTrip, setUpdateTrip] = useState({
