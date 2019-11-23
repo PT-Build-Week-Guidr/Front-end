@@ -8,6 +8,7 @@ import logo from '../images/logo.png';
 import SignUp from "../API/newUserForm"
 import { connect } from 'react-redux';
 import FetchTrips  from "../API/actions/fetching";
+
 import DeleteTrips from "../API/actions/delete";
 import TripDetails from "../API/deleteTrips";
 

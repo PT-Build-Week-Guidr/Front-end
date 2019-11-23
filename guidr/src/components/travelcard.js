@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
-import FetchTrips  from "../API/actions/fetching";
+
+
+import FetchTrips from "../API/actions/fetching";
 import {Link} from 'react-router-dom';
 
 import {Media, Button} from 'reactstrap';
+
 // import temp from '../images/icon.png';
 
 
