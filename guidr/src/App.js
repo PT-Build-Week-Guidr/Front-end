@@ -1,7 +1,7 @@
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 //import Profile from "./API/profile"
 import PrivateRoute  from "./API/ProtectedRoute";
-
+import Profile from "./API/profile";
 import React from 'react';
 import './App.css';
 //import APITest from './components/apiTest.js';

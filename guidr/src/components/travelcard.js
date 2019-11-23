@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
-import { FetchTrips } from "../API/actions/fetching";
+import  FetchTrips  from "../API/actions/fetching";
 
 import { Media } from "reactstrap";
 // import temp from '../images/icon.png';
