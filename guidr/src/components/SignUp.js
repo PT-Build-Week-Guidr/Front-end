@@ -5,15 +5,16 @@ import api from "../API/axiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
-
+import SignUp from "../API/newUserForm"
 import { connect } from 'react-redux';
 
 const MyInnerForm = props => {
    const {values, touched, errors} = props;
+   console.log(props, values, touched, errors);
 
     const handleSubmit = event => {
         event.preventDefault();
-        let auth = {username:values.username, password:values.password};
+        let auth={username: values.username, password: values.password}
         api()
             .post("https://guidr-project.herokuapp.com/users/login", auth)
             .then(res => {
@@ -28,7 +29,6 @@ const MyInnerForm = props => {
             });
     };
 
-
     return (
         <section >
             <img className="img-align" src={logo} alt="Guidr Logo"></img>
@@ -37,24 +37,24 @@ const MyInnerForm = props => {
             <br />
             <Form onSubmit={handleSubmit} className="login-form">
                 <label>
-                    Username:{' '}
+                    Username:
                 <Field
                         type="text"
                         name="username"
                         value={values.username}
-                        placeholder=" username"
+                        placeholder="username"
                     />
                      {touched.username && errors.username && <p color="danger">{errors.username}</p>}
                 </label>
                 <br />
                 <br />
                 <label>
-                    Password:{' '}
+                    Password:
                    <Field
                         type="password"
                         name="password"
                         value={values.password}
-                        placeholder=" password"
+                        placeholder="password"
                     />
                      {touched.password && errors.password && <p color="danger">{errors.password}</p>}
                 </label>
@@ -66,8 +66,8 @@ const MyInnerForm = props => {
             <br />
             <br />
             <p>Don't have an account? Click here to create one:</p>
+            <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
             <br />
-            <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '}
 
         </section>
     );
@@ -80,7 +80,7 @@ const EnchancedForm = withFormik({
 
     validationSchema: Yup.object().shape({
         username: Yup.string()
-            .max(20, 'Username must be shorter than 20 symbools')
+            .max(20, 'Username must be shorter than 20 symbols')
             .required('Username is required!'),
 
         password: Yup.string()
@@ -91,6 +91,4 @@ const EnchancedForm = withFormik({
 
 })(MyInnerForm);
 
-const WelcomePage = connect()(EnchancedForm);
-
-export default WelcomePage;
+export default SignUp;
