@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import FetchTrips  from "../API/actions/fetching";
 import {Link} from 'react-router-dom';
-
+import Profile from "../API/profile";
+import MyTripNew from "./newtrip";
 import {Media, Button} from 'reactstrap';
 // import temp from '../images/icon.png';
 
@@ -46,7 +47,7 @@ const TravelCardMain = (props) => {
         })}
         <br />
         <br />
-        <Button tag={Link} to='new/'> Add Trip </Button>
+        <Button tag={Link} onClick={MyTripNew} to='/trips/new'> Add Trip </Button>
 
 
     </div>

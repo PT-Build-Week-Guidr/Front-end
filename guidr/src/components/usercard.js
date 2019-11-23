@@ -6,8 +6,11 @@ import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
 import {Link} from "react-router-dom";
 import FetchTrips from "../API/actions/fetching";
 import api from "../API/axiosHeader";
-const UserCardMain = props => {
 import TripEdit from "./tripedit";
+
+
+
+const UserCardMain = props => {
   // const [curProfile, setCurProfile] = useState([]);
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;

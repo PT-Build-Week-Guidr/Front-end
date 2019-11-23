@@ -13,8 +13,8 @@ import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
-import TripEdit from './components/tripedit.js';
-import TripNew from './components/newtrip.js';
+import MyTripEdit from './components/tripedit.js';
+import MyTripNew from './components/newtrip.js';
 
 function App() {
   return (
@@ -82,22 +82,22 @@ function App() {
               />
             }
             />
-                <Route exact path="/users/:id/edit/trips" render={props =>
+            <Route exact path="/trips/edit" render={props =>
               <UpdateTrips
                 {...props}
 
               />
             }
             />
-            <Route exact path="/users/:id/trips/edit" render={props =>
-              <TripEdit
+            {/* <Route exact path="/trips/edit" render={props =>
+              <MyTripEdit
                 {...props}
 
               />
             }
-            />
+            /> */}
             <Route exact path="/trips/new" render={props =>
-              <TripNew
+              <MyTripNew
                 {...props}
 
                 />

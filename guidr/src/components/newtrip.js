@@ -43,9 +43,9 @@ const MyTripNew = props => {
     // setUpdateTrip(updateTrip2)
 
     event.preventDefault();
-    // const id = localStorage.getItem("id");
+    const id = localStorage.getItem("id");
     api()
-      .post(`https://guidr-project.herokuapp.com/users/${props.id}/trips`, newTrip)
+      .post(`https://guidr-project.herokuapp.com/users/${id}/trips`, newTrip)
       .then(res => {
         console.log(res.data);
       })
