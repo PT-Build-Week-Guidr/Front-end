@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Navbar } from 'reactstrap';
-import icon from '../images/icon.png';
+import icon from '../images/hamburger_icon.png';
 import logo from '../images/logo.png';
 
 const NavBar = () =>  {
