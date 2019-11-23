@@ -1,11 +1,11 @@
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import PrivateRoute  from "./API/ProtectedRoute";
-
+import Profile from "./API/profile";
 import React from 'react';
 import './App.css';
 import ProfilePage from './components/profile.js';
 import Footer from './components/footer.js';
-
+import UpdateTrips from "./API/updateTrips";
 import NavBar from './components/NavBar.js';
 
 import WelcomePage from './components/WelcomePage';
@@ -33,11 +33,19 @@ function App() {
           />
           <Route path= "/profile/" render={props=>
             <ProfilePage
+            
+              {...props}
+            />
+          }
+          />
+           <Route exact path="/addTrip" render={props =>
+            <Profile
               {...props}
 
             />
           }
           />
+
           <Route exact path="/" render={props =>
             <WelcomePage
               {...props}
@@ -68,6 +76,12 @@ function App() {
             />
             <Route exact path="/users/:id/trips" render={props =>
               <ProfilePage
+                {...props}
+              />
+            }
+            />
+                <Route exact path="/users/:id/edit/trips" render={props =>
+              <UpdateTrips
                 {...props}
 
               />

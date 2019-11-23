@@ -28,6 +28,7 @@ const MyInnerForm = props => {
             });
     };
 
+
     return (
         <section >
             <img className="img-align" src={logo} alt="Guidr Logo"></img>
