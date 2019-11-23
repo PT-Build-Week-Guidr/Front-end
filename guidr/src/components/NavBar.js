@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { NavbarBrand, Nav, NavItem, NavLink, Collapse, NavbarToggler, Navbar } from 'reactstrap';
-import icon from '../images/icon.png';
+import icon from '../images/hamburger_icon.png';
 import logo from '../images/logo.png';
 
 const NavBar = () =>  {
@@ -29,7 +29,7 @@ const NavBar = () =>  {
                             <NavLink href="/profile/">Profile</NavLink>
                         </NavItem>
                         <NavItem className="guidr-green2">
-                            <NavLink href="">Trips</NavLink>
+                            <NavLink href="/home">Home</NavLink>
                         </NavItem>
                         <NavItem className="guidr-green2">
                             <NavLink href="https://epic-mclean-14d6c5.netlify.com/">About Us</NavLink>

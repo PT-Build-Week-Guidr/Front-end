@@ -42,7 +42,7 @@ const Login = () => {
       <input
         type="text"
         name="password"
-        placeholder="Password"
+        placeholder="password"
         value={userAuth.password}
         onChange={handleChange}
       ></input>

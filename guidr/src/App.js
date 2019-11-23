@@ -13,6 +13,8 @@ import HomePage from './components/HomePage';
 import TravelPage from './components/travelpage.js';
 import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
+import TripEdit from './components/tripedit.js';
+import TripNew from './components/newtrip.js';
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
           />
           <Route path= "/profile/" render={props=>
             <ProfilePage
-            
+
               {...props}
             />
           }
@@ -87,7 +89,20 @@ function App() {
               />
             }
             />
+            <Route exact path="/users/:id/trips/edit" render={props =>
+              <TripEdit
+                {...props}
 
+              />
+            }
+            />
+            <Route exact path="/trips/new" render={props =>
+              <TripNew
+                {...props}
+
+                />
+              }
+              />
           </PrivateRoute>
         </Switch>
         <br />

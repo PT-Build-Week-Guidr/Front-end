@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
+<<<<<<< HEAD
+import { FetchTrips } from "../API/actions/fetching";
+import {Link} from 'react-router-dom';
+
+import {Media, Button} from 'reactstrap';
+=======
 import  FetchTrips  from "../API/actions/fetching";
 
 import { Media } from "reactstrap";
+>>>>>>> a578afb8ae6a8ef422c09847b48fb56c0e06fd23
 // import temp from '../images/icon.png';
 
 // import { Link } from "react-router-dom";
@@ -25,23 +32,30 @@ const TravelCardMain = (props) => {
 
   return (
     <div>
-      {tripList.map(trip => {
-        return (
-          <TripDetails
-            key={trip.id}
-            trip={trip.id}
-            title={trip.title}
-            full_name={trip.full_name}
-            description={trip.description}
-            type={trip.type}
-            start_date={trip.start_date}
-            end_date={trip.end_date}
-            duration_hours={trip.duration_hours}
-            duration_days={trip.duration_days}
-          />
-        );
-      })}
-      <br />
+
+        {tripList.map(trip => {
+          return (
+
+            <TripDetails
+              key={trip.id}
+              trip={trip.id}
+              title={trip.title}
+              full_name={trip.full_name}
+              description={trip.description}
+              type={trip.type}
+              start_date={trip.start_date}
+              end_date={trip.end_date}
+              duration_hours={trip.duration_hours}
+              duration_days={trip.duration_days}
+            />
+
+          );
+        })}
+        <br />
+        <br />
+        <Button tag={Link} to='new/'> Add Trip </Button>
+
+
     </div>
   );
 };
