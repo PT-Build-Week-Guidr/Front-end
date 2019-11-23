@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import api from "./axiosHeader";
 
 const Profile = props => {
+  //new trips
   const [newTrip, setNewTrip] = useState({
     title: "",
     description: "",
