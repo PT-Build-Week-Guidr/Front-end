@@ -1,6 +1,6 @@
 import api from "../axiosHeader";
 
-export const START_POSTING = "START_POSTING";
+// export const START_POSTING = "START_POSTING";
 // export const POST_SUCCESS = "POST_SUCCESS";
 // export const POST_FAILURE = "POST_FAILURE";
 

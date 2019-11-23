@@ -79,12 +79,12 @@ const EnchanedSignUpForm = withFormik({
 
     email: Yup.string()
       .min(2, 'Invalid email')
-      .max(10, 'Email must be shorter than 10 symbols')
+      .max(20, 'Email must be shorter than 20 symbols')
       .required('Email is required!'),
 
     full_name: Yup.string()
       .min(2, 'Invalid Name')
-      .max(10, 'Name must be shorter than 10 symbols')
+      .max(20, 'Name must be shorter than 20 symbols')
       .required('Name is required!'),
   })
 })(MySignUpForm);
