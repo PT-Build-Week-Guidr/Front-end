@@ -61,7 +61,11 @@ const TripPage = props => {
           </Row>
           <Row>
             <Col>
+<<<<<<< HEAD
               <Button tag={Link} to={`edit/`}>Edit</Button>
+=======
+              <Button tag={Link} to="/trips/edit/">Edit</Button>
+>>>>>>> a2d213bb446fb1b2557ee72f82193df15d54ed5d
               <br />
             </Col>
           </Row>
