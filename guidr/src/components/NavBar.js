@@ -23,14 +23,15 @@ const NavBar = () =>  {
 
                     <Nav navbar>
                         <NavItem className="guidr-green2">
+                            <NavLink href="/home/">Home</NavLink>
+                        </NavItem>
+                        <NavItem className="guidr-green2">
                             <NavLink href="/trips/">Trips</NavLink>
                         </NavItem>
-                        <NavItem className="guidr-green2">
+                        {/*<NavItem className="guidr-green2">
                             <NavLink href="/profile/">Profile</NavLink>
-                        </NavItem>
-                        <NavItem className="guidr-green2">
-                            <NavLink href="/home">Home</NavLink>
-                        </NavItem>
+                        </NavItem>*/}
+
                         <NavItem className="guidr-green2">
                             <NavLink href="https://epic-mclean-14d6c5.netlify.com/">About Us</NavLink>
                         </NavItem>

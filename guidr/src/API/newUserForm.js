@@ -32,6 +32,8 @@ const MySignUpForm = props => {
         value={values.username}
       />
       {touched.username && errors.username && <p color="danger">{errors.username}</p>}
+      <br />
+      <br />
       <Field
         type="password"
         name="password"
@@ -39,6 +41,8 @@ const MySignUpForm = props => {
         value={values.password}
       />
       {touched.password && errors.password && <p color="danger">{errors.password}</p>}
+      <br />
+      <br />
       <Field
         type="text"
         name="email"
@@ -46,6 +50,8 @@ const MySignUpForm = props => {
         value={values.email}
       />
       {touched.email && errors.email && <p color="danger">{errors.email}</p>}
+      <br />
+      <br />
       <Field
         type="text"
         name="full_name"
@@ -53,6 +59,8 @@ const MySignUpForm = props => {
         value={values.full_name}
       />
       {touched.full_name && errors.full_name && <p color="danger">{errors.full_name}</p>}
+      <br />
+      <br />
       <button className="guidr-green-button" tag={Link} to='/home'>Sign Up</button>{' '}
     </Form>
     </section>
