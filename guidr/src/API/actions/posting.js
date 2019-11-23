@@ -1,8 +1,8 @@
 import api from "../axiosHeader";
 
-export const START_POSTING = "START_POSTING";
-export const POST_SUCCESS = "POST_SUCCESS";
-export const POST_FAILURE = "POST_FAILURE";
+// export const START_POSTING = "START_POSTING";
+// export const POST_SUCCESS = "POST_SUCCESS";
+// export const POST_FAILURE = "POST_FAILURE";
 
 export const PostTrip = () => dispatch => {
   dispatch({ type: START_POSTING });
