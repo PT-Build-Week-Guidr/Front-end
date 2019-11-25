@@ -28,12 +28,8 @@ const NavBar = () =>  {
                         <NavItem className="guidr-green2">
                             <NavLink href="/trips/">Trips</NavLink>
                         </NavItem>
-                        {/*<NavItem className="guidr-green2">
-                            <NavLink href="/profile/">Profile</NavLink>
-                        </NavItem>*/}
-
                         <NavItem className="guidr-green2">
-                            <NavLink href="https://epic-mclean-14d6c5.netlify.com/">About Us</NavLink>
+                            <NavLink href="https://guidr-project.netlify.com/">About Us</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>

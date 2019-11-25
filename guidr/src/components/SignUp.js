@@ -6,11 +6,9 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
 import SignUp from "../API/newUserForm"
-import { connect } from 'react-redux';
 
 const MyInnerForm = props => {
    const {values, touched, errors} = props;
-   // console.log(props, values, touched, errors);
 
     const handleSubmit = event => {
         event.preventDefault();

@@ -1,7 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-
 import logo from '../images/logo.png';
 import group from '../images/group_of_people.jpg';
 import people from "../images/people_doing_things.jpg";
