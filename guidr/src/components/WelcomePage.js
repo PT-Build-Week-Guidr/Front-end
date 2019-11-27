@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import api from "../API/axiosHeader";
+import api from "../API/AxiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
@@ -64,7 +64,6 @@ const MyInnerForm = props => {
             <br />
             <p>Don't have an account? Click here to create one:</p>
             <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '}
-
         </section>
     );
 }
@@ -73,20 +72,15 @@ const EnchancedForm = withFormik({
         username: username || "",
         password: password || "",
     }),
-
     validationSchema: Yup.object().shape({
         username: Yup.string()
             .max(20, 'Username must be shorter than 20 symbools')
             .required('Username is required!'),
-
         password: Yup.string()
             .min(2, 'Invalid Password')
             .max(10, 'Password must be shorter than 10 symbols')
             .required('Password is required!'),
     })
-
 })(MyInnerForm);
-
 const WelcomePage = connect()(EnchancedForm);
-
 export default WelcomePage;

@@ -5,12 +5,12 @@ import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
   CardBody, CardTitle, CardText } from "reactstrap";
 import {Link} from "react-router-dom";
 import FetchTrips from "../API/actions/fetching";
-import api from "../API/axiosHeader";
+import api from "../API/AxiosHeader";
+import TripEdit from "./tripedit";
 
 
 
 const UserCardMain = props => {
-
   // const [curProfile, setCurProfile] = useState([]);
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
@@ -90,7 +90,7 @@ const UserCardMain = props => {
           </Row>
           <Row>
             <Col>
-              <Button tag={Link} to="edit/">Edit</Button>{'  '}
+              <Button tag={Link} to="/trips/edit" onclick={TripEdit}>Edit</Button>
               <Button onClick={DeleteTrips}>Delete</Button>
               <br />
             </Col>
