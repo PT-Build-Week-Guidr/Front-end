@@ -13,6 +13,8 @@ import TravelPage from './components/travelpage.js';
 import SignUp from "./API/newUserForm";
 import Login from './API/login.js';
 import MyEditTrip from './components/tripedit.js';
+import UpdateTrips from "./API/updateTrips";
+// import MyInnerForm from "./components/WelcomePage";
 
 function App() {
   return (
@@ -35,6 +37,13 @@ function App() {
             <ProfilePage
 
               {...props}
+            />
+          }
+          />
+               <Route exact path="/addTrip" render={props =>
+            <Profile
+              {...props}
+
             />
           }
           />
@@ -61,19 +70,19 @@ function App() {
               />
             }
             />
-            <Route exact path="/trips/" render={props =>
+            <Route exact path="/trips" render={props =>
               <TravelPage
                 {...props}
 
               />
             }
             />
-               <Route exact path="/trips/new" render={props =>
+               {/* <Route exact path="/trips/new" render={props =>
             <Profile
               {...props}
 
             />
-          }
+          } */}
           />
             <Route exact path="/users/:id/trips" render={props =>
               <ProfilePage
@@ -81,27 +90,27 @@ function App() {
               />
             }
             />
-            {/* <Route exact path="/trips/edit" render={props =>
+            <Route exact path="/trips/edit" render={props =>
               <UpdateTrips
                 {...props}
 
               />
             }
-            /> */}
-            <Route exact path="/trips/edit" render={props =>
+            />
+            <Route exact path="/users/:id/trips/edit" render={props =>
               <MyEditTrip
                 {...props}
 
               />
             }
             />
-            {/* <Route exact path="/trips/new" render={props =>
+            <Route exact path="/trips/new" render={props =>
               <MyTripNew
                 {...props}
 
                 />
               }
-              /> */}
+              />
           </PrivateRoute>
         </Switch>
         <br />

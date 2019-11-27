@@ -100,7 +100,7 @@ const MyEditTrip = props => {
           name="duration_days"
           placeholder="duration_days"
         />
-        <button type="submit" tag={Link} to="/trips/">Submit</button>
+        <button type="submit" tag={Link} to="/trips">Submit</button>
       </form>
     </div>
   );
