@@ -1,7 +1,6 @@
   
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import Profile from "./profile";
 function PrivateRoute({ component: Component, ...rest }) {
   return (
     <Route

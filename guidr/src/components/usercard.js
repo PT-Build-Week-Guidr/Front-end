@@ -6,11 +6,11 @@ import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
 import {Link} from "react-router-dom";
 import FetchTrips from "../API/actions/fetching";
 import api from "../API/AxiosHeader";
-import TripEdit from "./tripedit";
 
 
 
 const UserCardMain = props => {
+
   // const [curProfile, setCurProfile] = useState([]);
   // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
@@ -40,7 +40,7 @@ const UserCardMain = props => {
   const DeleteTrips = () => {
     // const id = localStorage.getItem("id")
     const id = props.match.params.id
-    console.log(id)
+    // console.log(props.match.params.id)
     api()
       .delete(`https://guidr-project.herokuapp.com/trips/${id}`)
       .then(res => {
@@ -90,7 +90,7 @@ const UserCardMain = props => {
           </Row>
           <Row>
             <Col>
-              <Button tag={Link} to="/trips/edit" onclick={TripEdit}>Edit</Button>
+              <Button tag={Link} to="/trips/edit">Edit</Button>{'  '}
               <Button onClick={DeleteTrips}>Delete</Button>
               <br />
             </Col>
@@ -98,7 +98,7 @@ const UserCardMain = props => {
           <Row>
             <Col>
               <br />
-              <Button tag={Link} to="/trips/">Back</Button>
+              <Button tag={Link} to="/trips">Back</Button>
             </Col>
           </Row>
         </Container>

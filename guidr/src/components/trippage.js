@@ -7,8 +7,7 @@ import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
 import {Link} from "react-router-dom";
 import DeleteTrips from "../API/actions/delete";
 import TripDetails from "../API/deleteTrips";
-import MyTripEdit from "./tripedit";
-import UpdateTrips from "../API/updateTrips";
+
 const TripPage = props => {
 
 
@@ -62,16 +61,14 @@ const TripPage = props => {
           </Row>
           <Row>
             <Col>
-            />*/}
-            />*/}
-              <Button tag={Link} onClick={UpdateTrips} to="/trips/edit">Edit</Button>
+              <Button tag={Link} to="/trips/edit">Edit</Button>
               <br />
             </Col>
           </Row>
           <Row>
             <Col>
               <br />
-              <Button tag={Link} to="/trips/">Back</Button>
+              <Button tag={Link} to="/trips">Back</Button>
             </Col>
           </Row>
         </Container>
