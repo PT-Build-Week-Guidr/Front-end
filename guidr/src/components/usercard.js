@@ -39,7 +39,7 @@ const UserCardMain = props => {
 
   const DeleteTrips = () => {
     // const id = localStorage.getItem("id")
-    const id = props.match.params.id
+    const id = props.match.params.trips.id
     // console.log(props.match.params.id)
     api()
       .delete(`https://guidr-project.herokuapp.com/trips/${id}`)

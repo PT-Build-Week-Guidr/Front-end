@@ -13,7 +13,7 @@ import HomePage from "./components/HomePage";
 import TravelPage from "./components/travelpage.js";
 import SignUp from "./API/newUserForm";
 import Login from "./API/login.js";
-// import MyTripEdit from './components/tripedit.js';
+import MyTripEdit from "./components/tripedit.js";
 import TripNew from "./components/newtrip.js";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           {/* <Route path="/login" render={props => <Login {...props} />} /> */}
 
           <Route exact path="/" render={props => <Login {...props} />} />
-          <Route path='/signUp/' render={props => <SignUp {...props} />} />
+          <Route path="/signUp/" render={props => <SignUp {...props} />} />
           <PrivateRoute>
             <Route
               exact
@@ -54,17 +54,20 @@ function App() {
               path="/users/:id/trips"
               render={props => <ProfilePage {...props} />}
             />
-            <Route
+            {/* <Route
               exact
               path="/users/:id/edit/trips"
               render={props => <UpdateTrips {...props} />}
+            /> */}
+            <Route
+              exact
+              path="/trips/edit"
+              render={props => <UpdateTrips {...props} />}
             />
-            <Route exact path="/trips/edit" render={props =>
-              <UpdateTrips
-                {...props}
-
-              />
-            }
+            <Route
+              exact
+              path="/users/:id/trips"
+              render={props => <ProfilePage {...props} />}
             />
             <Route
               exact

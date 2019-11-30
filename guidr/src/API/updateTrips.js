@@ -29,7 +29,7 @@ const UpdateTrips = props => {
   const handleSubmit = event => {
     event.preventDefault();
     const id = props.match.params.id
-    console.log(props.match.params.id)
+    // console.log(props.match.params.id)
     api()
       .put(`https://guidr-project.herokuapp.com/trips/${id}`, updateTrip)
       .then(res => {
