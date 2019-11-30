@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import api from "./AxiosHeader";
+import { Link } from 'react-router-dom';
+
 
 const UpdateTrips = props => {
+
   const [updateTrip, setUpdateTrip] = useState({
     title: "",
     description: "",
@@ -12,7 +15,6 @@ const UpdateTrips = props => {
     duration_hours: 0,
     duration_days: 0
   });
-
   if (props.isFetching) {
     return <p>Loading trips</p>;
   }
@@ -26,7 +28,8 @@ const UpdateTrips = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const id = localStorage.getItem("id");
+    const id = props.match.params.id
+    // console.log(props.match.params.id)
     api()
       .put(`https://guidr-project.herokuapp.com/trips/${id}`, updateTrip)
       .then(res => {
@@ -96,7 +99,7 @@ const UpdateTrips = props => {
           name="duration_days"
           placeholder="duration_days"
         />
-        <button to="users/:id/edit/trips" type="submit">Update Trip</button>
+        <button tag={Link} to="users/:id/edit/trips" type="submit">Update Trip</button>
       </form>
     </div>
   );

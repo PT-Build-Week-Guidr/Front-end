@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import api from "./AxiosHeader";
+import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
+
 
 const Login = () => {
   const [userAuth, setUserAuth] = useState({
@@ -31,7 +34,13 @@ const Login = () => {
   };
 
   return (
-<form onSubmit={handleSubmit}>
+
+
+    <section >
+    <img className="img-align" src={logo} alt="Guidr Logo"></img>
+    <br />
+    <br />
+   <form className="login-form" onSubmit={handleSubmit}>
       <input
         type="text"
         name="username"
@@ -39,6 +48,8 @@ const Login = () => {
         value={userAuth.username}
         onChange={handleChange}
       ></input>
+       <br />
+      <br />
       <input
         type="text"
         name="password"
@@ -46,8 +57,15 @@ const Login = () => {
         value={userAuth.password}
         onChange={handleChange}
       ></input>
-      <button type="submit">Sign In</button>
+       <br />
+      <br />
+      <button type="submit" className="guidr-green-button" tag={Link} to="/home">Submit</button>
     </form>
+    <br />
+    <p>Don't have an account? Click here to create one:</p>
+    <button color="success" tag={Link} to='/signUp'>Sign Up</button>
+</section>
+
   );
 }
 

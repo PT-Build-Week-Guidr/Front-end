@@ -58,12 +58,12 @@ const MyInnerForm = props => {
                 </label>
                 <br />
                 <br />
-                <Button className="guidr-green-button" tag={Link} to='/home'>Submit</Button>{' '}
+                <Button type="submit" className="guidr-green-button" tag={Link} to='/home'>Submit</Button>{' '}
 
             </Form>
             <br />
             <p>Don't have an account? Click here to create one:</p>
-            <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '}
+            {/* <Button color="success" tag={Link} to='/signUp'>Sign Up</Button>{' '} */}
         </section>
     );
 }

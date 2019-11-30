@@ -68,7 +68,6 @@ const MyInnerForm = props => {
             <p>Don't have an account? Click here to create one:</p>
             <Button color="success" tag={Link} to='/signUp' component={SignUp}>Sign Up</Button>{' '}
             <br />
-
         </section>
     );
 }
@@ -77,18 +76,15 @@ const EnchancedForm = withFormik({
         username: username || "",
         password: password || "",
     }),
-
     validationSchema: Yup.object().shape({
         username: Yup.string()
             .max(20, 'Username must be shorter than 20 symbols')
             .required('Username is required!'),
-
         password: Yup.string()
             .min(2, 'Invalid Password')
             .max(10, 'Password must be shorter than 10 symbols')
             .required('Password is required!'),
     })
-
 })(MyInnerForm);
-
+const SignUp = connect()(EnchancedForm);
 export default SignUp;
