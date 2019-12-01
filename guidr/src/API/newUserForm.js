@@ -1,5 +1,5 @@
 import React from "react";
-import api from "./AxiosHeader";
+import api from "./axiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { connect } from 'react-redux';

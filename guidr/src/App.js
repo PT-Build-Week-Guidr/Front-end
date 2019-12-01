@@ -58,17 +58,17 @@ function App() {
               exact
               path="/users/:id/edit/trips"
               render={props => <UpdateTrips {...props} />}
-            /> */}
+            /> *
             <Route
               exact
               path="/trips/edit"
               render={props => <UpdateTrips {...props} />}
+            />*/}
+            <Route exact path="/users/:id/trips/edit" render={props=>
+              <MyTripEdit {...props} /> }
             />
-            <Route
-              exact
-              path="/users/:id/trips"
-              render={props => <ProfilePage {...props} />}
-            />
+
+            
             <Route
               exact
               path="/trips/new"
