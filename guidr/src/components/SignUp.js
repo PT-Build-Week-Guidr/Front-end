@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import api from "../API/axiosHeader";
+import api from "../API/AxiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
