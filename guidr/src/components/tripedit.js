@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
-import api from "../API/AxiosHeader";
+import api from "../API/axiosHeader.js";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from "../images/logo.png";
@@ -10,6 +10,9 @@ import { connect } from "react-redux";
 import FetchTrips from "../API/actions/fetching";
 import DeleteTrips from "../API/actions/delete";
 import TripDetails from "../API/deleteTrips";
+import { push } from "react-router-redux";
+
+
 
 const MyTripEdit = props => {
   const { values, touched, errors } = props;
@@ -39,19 +42,19 @@ const MyTripEdit = props => {
       duration_hours: values.duration_hours,
       duration_days: values.duration_days
     };
-
+    //console.log(updateTrip)
     // setUpdateTrip(updateTrip2)
 
     api()
-    .put(`https://guidr-project.herokuapp.com/trips/${id}`, updateTrip)
-    .then(res => {
-        console.log(res.data);
-        works = 1;
-        // this.props.history.push("/trips");
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+      .put(`https://guidr-project.herokuapp.com/trips/${id}`, updateTrip)
+      .then(res => {
+          console.log(res.data);
+          //works = 1;
+          
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
 
     // if (works === 1) {
     //   works = 0;
@@ -65,7 +68,7 @@ const MyTripEdit = props => {
       <br />
       <h1>Edit</h1>
       <br />
-      <Form onSubmit={handleSubmit} className="trip-edit-form">
+      <Form onSubmit={handleSubmit.bind(this)} className="trip-edit-form">
         <label>
           Title:{" "}
           <Field
@@ -162,8 +165,7 @@ const MyTripEdit = props => {
         <Button
           className="guidr-green-button"
           type="submit"
-          tag={Link}
-          to="/trips/"
+
         >
           Submit
         </Button>{" "}
