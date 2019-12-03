@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import api from "./AxiosHeader";
+import api from "./axiosHeader";
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
+import {Button} from "reactstrap";
 
 
 const Login = () => {
@@ -59,11 +60,11 @@ const Login = () => {
       ></input>
        <br />
       <br />
-      <button type="submit" className="guidr-green-button" tag={Link} to="/home">Submit</button>
+      <Button type="submit" className="guidr-green-button" tag={Link} to="/home">Submit</Button>
     </form>
     <br />
     <p>Don't have an account? Click here to create one:</p>
-    <button color="success" tag={Link} to='/signUp'>Sign Up</button>
+    <Button type="submit" className="guidr-green-button" tag={Link} to='/signUp'>Sign Up</Button>
 </section>
 
   );

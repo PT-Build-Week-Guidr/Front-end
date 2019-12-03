@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
-import api from "../API/AxiosHeader.js";
+import api from "../API/axiosHeader.js";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from "../images/logo.png";
@@ -49,7 +49,7 @@ const MyTripEdit = props => {
       .then(res => {
           console.log(res.data);
           //works = 1;
-          
+
         })
         .catch(err => {
           console.log(err.response);
@@ -161,11 +161,7 @@ const MyTripEdit = props => {
         </label>
         <br />
         <br />
-        <Button
-          className="guidr-green-button"
-          type="submit"
-
-        >
+        <Button className="guidr-green-button" type="submit">
           Submit
         </Button>{" "}
       </Form>

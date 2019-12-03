@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import { Button } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
-import api from "../API/AxiosHeader";
+import api from "../API/axiosHeader";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import logo from '../images/logo.png';
@@ -48,6 +48,7 @@ const MyTripNew = props => {
 
     event.preventDefault();
     const id = localStorage.getItem("id");
+
     api()
       .post(`https://guidr-project.herokuapp.com/users/${id}/trips`, newTrip)
       .then(res => {
@@ -161,7 +162,7 @@ const MyTripNew = props => {
             </label>
             <br />
             <br />
-            <Button className="guidr-green-button" type="submit" tag={Link} to='/trips/'>Submit</Button>{' '}
+            <Button className="guidr-green-button" type="submit" >Submit</Button>{' '}
 
           </Form>
 
