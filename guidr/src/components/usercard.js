@@ -1,56 +1,46 @@
 import React, { useEffect } from "react";
 // import TripCard from "./addTrip";
 import { connect } from "react-redux";
-import { Container, Row, Col, Card, Button, CardHeader, CardFooter,
-  CardBody, CardTitle, CardText } from "reactstrap";
-import {Link} from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardTitle,
+  CardText
+} from "reactstrap";
+import { Link } from "react-router-dom";
 import FetchTrips from "../API/actions/fetching";
 import api from "../API/AxiosHeader";
 
-
-
 const UserCardMain = props => {
-
-  // const [curProfile, setCurProfile] = useState([]);
-  // const [curTrips, setCurTrips] = useState([]);
   const tripList = props.trips;
 
-  let curProfile = tripList.filter(it => `${it.id}`===`${props.match.params.id}`);
-
+  let curProfile = tripList.filter(
+    it => `${it.id}` === `${props.match.params.id}`
+  );
 
   let id = props.match.params.id;
-
-  // console.log("props match id", props.match.params.id);
-
-
-  // useEffect(() => {
-  //   tripList.forEach(trip =>{
-  //     console.log(trip.id);
-  //     if (`${trip.id}` === `${props.match.params.id}`){
-  //       setCurProfile(trip);
-  //     }
-  //   })
-  //
-  // }, [props.match.params.id]);
 
   useEffect(() => {
     props.FetchTrips();
   }, []);
 
   const DeleteTrips = () => {
-    // const id = localStorage.getItem("id")
-    const id = props.match.params.trips.id
-    // console.log(props.match.params.id)
     api()
       .delete(`https://guidr-project.herokuapp.com/trips/${id}`)
       .then(res => {
-        console.log(res.data)
-        console.log("deleted")
+        console.log(res.data);
+        console.log("deleted");
         FetchTrips();
       })
       .catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   };
 
   // console.log("usercardmain props match:", props);
@@ -60,37 +50,36 @@ const UserCardMain = props => {
   }
 
   // console.log("usercardmain2", props.trips);
-  if(curProfile[0] !== undefined){
-      return (
-        <div>
-          <Container>
-            <Row>
-              <Col>
-
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h2>{curProfile[0].title}</h2>
-                <h3>{curProfile[0].type}</h3>
-                <h4>{curProfile[0].description}</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <p>Start Date: {curProfile[0].start_date}</p>
-                <p>End Date: {curProfile[0].end_date}</p>
-                <p>Set to Private: {`${curProfile[0].private}`}</p>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-
-              </Col>
+  if (curProfile[0] !== undefined) {
+    return (
+      <div>
+        <Container>
+          <Row>
+            <Col></Col>
           </Row>
           <Row>
             <Col>
-              <Button tag={Link} to="edit">Edit</Button>{'  '}
+              <h2>{curProfile[0].title}</h2>
+              <h3>{curProfile[0].type}</h3>
+              <h4>{curProfile[0].description}</h4>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>Start Date: {curProfile[0].start_date}</p>
+              <p>End Date: {curProfile[0].end_date}</p>
+              <p>Set to Private: {`${curProfile[0].private}`}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button tag={Link} to="edit">
+                Edit
+              </Button>
+              {"  "}
               <Button onClick={DeleteTrips}>Delete</Button>
               <br />
             </Col>
@@ -98,19 +87,17 @@ const UserCardMain = props => {
           <Row>
             <Col>
               <br />
-              <Button tag={Link} to="/trips">Back</Button>
+              <Button tag={Link} to="/trips">
+                Back
+              </Button>
             </Col>
           </Row>
         </Container>
       </div>
     );
   } else {
-    return(
-      <div>
-        You need to make a selection
-      </div>
-    );
-  };
+    return <div>You need to make a selection</div>;
+  }
 };
 
 const mapStateToProps = state => {

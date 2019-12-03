@@ -14,7 +14,7 @@ import TravelPage from "./components/travelpage.js";
 import SignUp from "./API/newUserForm";
 import Login from "./API/login.js";
 import MyTripEdit from "./components/tripedit.js";
-import TripNew from "./components/newtrip.js";
+import MyTripNew from "./components/newtrip.js";
 
 function App() {
   return (
@@ -69,11 +69,11 @@ function App() {
             />
 
             
-            <Route
+            {/* <Route
               exact
-              path="/trips/new"
-              render={props => <TripNew {...props} />}
-            />
+              path="/trips/new/"
+              render={props => <MyTripNew {...props} />}
+            /> */}
           </PrivateRoute>
         </Switch>
         <br />
