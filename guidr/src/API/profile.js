@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Api from "./AxiosHeader";
+import Api from "./axiosHeader";
 
 const Profile = props => {
   const [newTrip, setNewTrip] = useState({
