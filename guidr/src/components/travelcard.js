@@ -49,7 +49,7 @@ const TravelCardMain = (props) => {
         })}
         <br />
         <br />
-        <Button tag={Link} to='new/'> Add Trip </Button>
+        <Button tag={Link} to='/addTrip'> Add Trip </Button>
 
 
     </div>
